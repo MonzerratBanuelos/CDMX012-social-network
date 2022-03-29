@@ -13,28 +13,42 @@ const postPublicado = document.getElementById('postPublicado');
 let editandoReceta = false;
 let id = '';
 
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('DOMContentLoaded', () => {
   alConseguirRecetas((querySnapshot) => {
-    let html = '';
     querySnapshot.forEach((doc) => {
       const publicacion = doc.data();
-      html += `
-      <div class = 'post'>
-        <h3>${publicacion.receta}</h3>
-        <p>${publicacion.ingredientes}</p>
-        <p>${publicacion.procedimiento}</p>
-        <p>${publicacion.categoria}</p>
-        <img src="${publicacion.categoria.src}">
-        <button class = 'borrarPost' data-id= "${doc.id}"> Borrar </button>
-        <button class = 'editarPost' data-id= "${doc.id}"> Editar </button>
-    </div>
-    `;
-    });
-    postPublicado.innerHTML = html;
-    const borrarPost = postPublicado.querySelectorAll('.borrarPost');
+      
+      const post = document.createElement('div');
+      post .setAttribute('class', 'post');
+        // <h3>${publicacion.receta}</h3>
+const h3PublicacionReceta = document.createElement('h3');
+h3PublicacionReceta.textContent = publicacion.receta;
+const ingredientesP = document.createElement('p');
+ingredientesP.textContent = publicacion.ingredientes;
+       // <p>${publicacion.procedimiento}</p>
+const publicacionProcedimientosP = document.createElement('p');
+publicacionProcedimientosP.textContent = publicacion.procedimiento;
+        // <p>${publicacion.categoria}</p>
+const publicacionCategoriaP = document.createElement('p');
+publicacionCategoriaP.textContent = publicacion.categoria;
+const borrarPostBoton = document.createElement('button');
+borrarPostBoton.textContent = 'Borrar';
+borrarPostBoton.setAttribute('data-id', doc.id);
+borrarPostBoton.setAttribute('class', 'borrarPost');
+       // <button class = 'borrarPost' data-id= "${doc.id}"> Borrar </button>
+       const editarPostBoton = document.createElement('button');
+       editarPostBoton.textContent = 'Editar';
+       editarPostBoton.setAttribute('data-id', doc.id);
+       editarPostBoton.setAttribute('class', 'editarPost');
+       // <button class = 'editarPost' data-id= "${doc.id}"> Editar </button>
+       post.append(h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, borrarPostBoton, editarPostBoton);
+   postPublicado.appendChild(post);
+   const borrarPost = postPublicado.querySelectorAll('.borrarPost');
     borrarPost.forEach((btn) => {
-      btn.addEventListener('click', ({ target: { dataset } }) => {
-        borrarReceta(dataset.id);
+      btn.addEventListener('click', async ({ target: { dataset } }) => {
+        postPublicado.removeChild(post);
+        await borrarReceta(dataset.id);
+        
       /* Las dos lineas de arriba es simplificado de : event.target.dataset.id
  (obtiene el id del boton desde firestore) A esto se le llama destructuración */
       });
@@ -51,6 +65,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         id = datosReceta.id;
       });
     });
+      });
+    
+    
   });
 });
 

@@ -92,6 +92,11 @@ export const muro = () => {
   inputProcedimiento.setAttribute('id', 'inputProcedimiento');
   inputProcedimiento.setAttribute('placeholder', 'Procedimiento');
   inputProcedimiento.setAttribute('type', 'text');
+  const labelFoto = document.createElement('label');
+  labelFoto.textContent = '¿Quieres incluir una foto y/o categoría?';
+  const inputFoto = document.createElement('input');
+  inputFoto.setAttribute('type', 'file');
+  inputFoto.setAttribute('id', 'inputFoto');
   const selectCategoria = document.createElement('select');
   selectCategoria.setAttribute('id', 'selectCategoria');
   const catSalado = document.createElement('option');
@@ -120,7 +125,7 @@ export const muro = () => {
   const postPublicado = document.createElement('div');
   postPublicado.setAttribute('id', 'postPublicado');
 
-  formPublicacion.append(labelReceta, inputReceta, labelIngredientes, inputIngredientes, labelProcedimiento, inputProcedimiento, btnPublicar,  selectCategoria);
+  formPublicacion.append(labelReceta, inputReceta, labelIngredientes, inputIngredientes, labelProcedimiento, inputProcedimiento,labelFoto, inputFoto, btnPublicar,  selectCategoria);
   seccionMuro.append(cabeza, publicar, contenedorPerfil, formPublicacion, postPublicado);
   return seccionMuro;
 };

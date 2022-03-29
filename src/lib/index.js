@@ -15,6 +15,7 @@ import {
   sendEmailVerification,
   GoogleAuthProvider,
   signInWithPopup,
+  signOut,
 } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 // import { modal } from '../Component/modal.js';
 
@@ -22,6 +23,7 @@ import {
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+export { getAuth, onAuthStateChanged };
 export const firebaseConfig = {
   apiKey: 'AIzaSyAC5Xdg_jFGY0p6OJSwkX52fkXRqdKnjqw',
   authDomain: 'yummy-65cbb.firebaseapp.com',
@@ -53,28 +55,11 @@ export function iniciarSesion() {
         document.getElementById('mensajeLogin').textContent = ' Estas Logueado ' + email;
   }
     }
+    onNavigate('/');
   });
 }
-export function usuarioExistente() { // OBSERVADOR
-  const emailLogin = document.getElementById('email').value;
-  const contraseñaLogin = document.getElementById('contraseña').value;
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, emailLogin, contraseñaLogin)
-    // eslint-disable-next-line no-unused-vars
-    .then((userCredential) => {
-    // Signed in
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      document.getElementById('contmodal').style.opacity = '1';
-      document.getElementById('contmodal').style.visibility = 'visible';
-      document.getElementById('mensajemal').textContent = errorCode;
-      const errorMessage = error.message;
-      document.getElementById('contmodal').style.opacity = '1';
-      document.getElementById('contmodal').style.visibility = 'visible';
-      document.getElementById('mensajemal').textContent = errorMessage;
-    });
-}
+export const usuarioExistente = (emailLogin, contraseñaLogin) =>
+  signInWithEmailAndPassword(getAuth(), emailLogin, contraseñaLogin);
 export function verificarCorreo() {
   const auth = getAuth();
   sendEmailVerification(auth.currentUser)
@@ -125,7 +110,7 @@ export function registrar() {
   }
 }
 export function cerrar() {
-  getAuth().signOut()
+  signOut(getAuth())
     .then(
       () => {
         alert('Cerraste sesión');

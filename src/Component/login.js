@@ -5,6 +5,7 @@ import { modal } from '../Component/modal.js';
 
 export const login = () => {
   const seccionGeneral = document.createElement('section');
+  seccionGeneral.setAttribute('id', 'seccionGeneral');
   const tabla = document.createElement('IMG');
   tabla.src = './images/login.png';
   tabla.setAttribute('id', 'cocina');
@@ -50,7 +51,20 @@ export const login = () => {
   linkbotonlogin.textContent = 'Iniciar sesión';
   botonLogin.appendChild(linkbotonlogin);
   botonLogin.addEventListener('click', () => {
-    usuarioExistente();
+    usuarioExistente(inputEmailLogin.value, inputContraseñaLogin.value)
+    .then((userCredential) => {
+      // Signed in
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        document.getElementById('contmodal').style.opacity = '1';
+        document.getElementById('contmodal').style.visibility = 'visible';
+        document.getElementById('mensajemal').textContent = errorCode;
+        const errorMessage = error.message;
+        document.getElementById('contmodal').style.opacity = '1';
+        document.getElementById('contmodal').style.visibility = 'visible';
+        document.getElementById('mensajemal').textContent = errorMessage;
+      });
     iniciarSesion();
   });
   const imgGoogle = document.createElement('IMG');

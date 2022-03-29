@@ -1,12 +1,15 @@
 @media (min-width:801px){
    
     body{
-           background-color: #EBC920;
+           background-color: #ffffff;
            margin: 0;
            font-family:  'Roboto', sans-serif;
            font-weight: bold;
            
        }
+    #seccionGeneral{
+        background-color: #EBC920;
+    }
     #cocina{
         margin: 0%;
         width: 45%;
@@ -199,16 +202,18 @@
     }
     #seccionMuro{
         background-color: white;
-        width: 100%;
-        height: 100%;
+        width: 100% vw;
+        height: 100% vh;
+        display: flex;
        
       
     }
     #cabeza{
-        position: relative;
-        background-color: #EBC920;
+        position: fixed;
+        background-color: #20eb5d;
         width: 100%;
-        height: 10%;
+        height: 15%;
+        z-index: 999;
     }
     #buscador {
         width: 20%;
@@ -253,6 +258,7 @@
         height: 528px;
         background-color: #F8ECB1;
         position: fixed;
+        top:15%;
         left: 75%;
         display: flex;
     }
@@ -311,6 +317,7 @@
         margin: 0%;
         display: flex;
         align-items: center;
+        background: #F8ECB1;
         border-radius: 12px;
         border: #EBC920 1px solid;
         box-shadow: 1px 1px 1px 1px rgba(173, 147, 13, 0.527);
@@ -335,51 +342,82 @@
         background-color: #EBC920;
         color: white;
     }
-   form{
-       position: absolute;
-       top:40%;
-       left:20%;
-       width: 60%;
-       height: 78%;
-       background-color: white;
-       height: 700px;
-       border: #EBC920 1.5px solid;
-       display: flex;
-       flex-wrap: wrap;
-       justify-content: center;
-       align-content: space-around;
-   }
-   #inputReceta{
-       width: 65%;
-   }
-   #btnPostear{
-    width: 20%;
-    height: 5%;
-    background-color: white;
-    border: #EBC920 1.5px solid;
-    border-radius: 12px;
-    color: gray;
-    font-weight: bold;
-    text-align: left;
-    cursor: pointer;
-   }
-   #selectCategoria{
-       width: 10%;
+    form{
+        position: absolute;
+        top:20%;
+        left:20%;
+        width: 60%;
+        height: 78%;
+        background-color: white;
+        height: 700px;
+        border: #EBC920 1.5px solid;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+    form #inputReceta{
+        width: 75%;
+        height: 2%;
+        margin-left: 12.5%;
+    }
+    #inputIngredientes{
+        width: 75%;
+        height: 10%;
+        margin-left: 12.5%;
+        
+    }
+    #inputProcedimiento{
+        width: 75%;
+        height: 20%;
+        margin-left: 12.5%;
+    }
+    #inputFoto{
+        width: 55%;
+    }
+    
+    form label{
+       width: 100%;
        height: 5%;
-   }
-   .post{
-       background-color: aquamarine;
-       width: 50%;
-       padding: 1%;
-       border: #EBC920 1.5px solid;
-       border-radius: 10px;
-       margin: 1%;
-       position: relative;
-       top:50%;
-       left:10%;
-       box-shadow: 2px 2px 2px 2px rgba(56, 55, 55, 0.295);
+       margin-left: 12.5%;
 
-   }    
+    }
+    #btnPostear{
+     width: 20%;
+     height: 5%;
+     background-color: black;
+     border: #EBC920 1.5px solid;
+     border-radius: 12px;
+     color: white;
+     font-weight: bold;
+     text-align: left;
+     cursor: pointer;
+    }
+    #selectCategoria{
+        width: 10%;
+        height: 5%;
+    }
+ 
+   #postPublicado{
+        width: 75%;
+        background-color: rgb(55, 153, 160);
+        position: absolute;
+        top: 35%;
+       
+       }
+       .post{
+           background-color: aquamarine;
+           width: 80%;
+           padding: 1%;
+           border: #EBC920 1.5px solid;
+           border-radius: 10px;
+           margin: 1%;
+           position: relative;
+           top:50%;
+           left:8%;
+           box-shadow: 2px 2px 2px 2px rgba(56, 55, 55, 0.295);
+    
+       }    
 }
 
     @media (max-width:500px){
@@ -607,5 +645,18 @@ a{
     top: 48.5%;
     left: 73%;
     cursor: pointer;
+}
+#seccionMuro{
+    background-color: white;
+    width: 100% vw;
+    height: 100% vh;
+    display: flex;
+}
+#cabeza{
+    position: fixed;
+    background-color:#EBC920;
+    width: 100%;
+    height: 15%;
+  /*  z-index: 999;*/
 }
 }
