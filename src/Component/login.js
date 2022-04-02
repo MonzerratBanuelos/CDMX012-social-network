@@ -2,7 +2,7 @@
 import { onNavigate } from '../router.js';
 import { iniciarSesion, usuarioExistente, google } from '../lib/index.js';
 import { modal } from '../Component/modal.js';
-
+//HOLI
 export const login = () => {
   const seccionGeneral = document.createElement('section');
   const tabla = document.createElement('IMG');
