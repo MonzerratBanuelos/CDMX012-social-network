@@ -2,7 +2,7 @@
 import { onNavigate } from '../router.js';
 import { iniciarSesion, usuarioExistente, google } from '../lib/index.js';
 import { modal } from '../Component/modal.js';
-//HOLI
+// HOLI
 export const login = () => {
   const seccionGeneral = document.createElement('section');
   const tabla = document.createElement('IMG');
@@ -117,8 +117,8 @@ export const login = () => {
   // btnMostrarModal.appendChild(mostrarModal);
   // contenedorPadre.append(contenedorModal, iconomal, mensajemal, btnVolver);
   // eslint-disable-next-line max-len
-  seccionLogin.append(logoYummi, inputEmailLogin, inputContraseñaLogin, botonLogin, botonGoogle, botonContraseña, parrafo, botonRegistrate, /*contenedorPadre,*/ btnmostrarcontraseña);
-  const modalqueque = modal();
-  seccionGeneral.appendChild(modalqueque);
+  seccionLogin.append(logoYummi, inputEmailLogin, inputContraseñaLogin, botonLogin, botonGoogle, botonContraseña, parrafo, botonRegistrate, /*contenedorPadre,*/ btnmostrarcontraseña, modal());
+  // const modalqueque = modal();
+  // seccionGeneral.appendChild(modalqueque);
   return seccionGeneral;
 };

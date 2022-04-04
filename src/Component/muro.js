@@ -54,11 +54,12 @@ export const muro = () => {
   const cajaFoto = document.createElement('div');
   cajaFoto.setAttribute('id', 'cajaFoto');
   const usuarioImg = document.createElement('IMG');
-  usuarioImg.src = pruebuski[1] ? pruebuski[1] : '../images/fotoperfil.png';
+  usuarioImg.src = pruebuski.fotoUsuario ? pruebuski.fotoUsuario : '../images/fotoperfil.png';
+  console.log(pruebuski.fotoUsuario);
   usuarioImg.setAttribute('id', 'fotousuario');
   const nombreUser = document.createElement('h1');
   nombreUser.setAttribute('id', 'nombreUser');
-  nombreUser.textContent = pruebuski[0];
+  nombreUser.textContent = pruebuski.nombre;
   const cerrarSesionImg = document.createElement('IMG');
   cerrarSesionImg.src = '../images/puerta.png';
   cerrarSesionImg.setAttribute('id', 'cerrarSesionImg');
@@ -75,7 +76,7 @@ export const muro = () => {
   const publicar = document.createElement('fieldset');
   publicar.setAttribute('id', 'publicar');
   const fotoUsuarioP = document.createElement('IMG');
-  fotoUsuarioP.src = '../images/fotoperfil.png';
+  fotoUsuarioP.src = pruebuski.fotoUsuario;
   fotoUsuarioP.setAttribute('id', 'usuarioPublicar');
   const botonPublicar = document.createElement('button');
   botonPublicar.setAttribute('id', 'btnPublicar');

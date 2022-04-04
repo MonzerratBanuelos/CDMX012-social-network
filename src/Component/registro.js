@@ -2,6 +2,7 @@
 // import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import { registrar, verificarCorreo } from '../lib/index.js';
+import { modal } from './modal.js';
 
 export const registro = () => {
   const seccionGeneral = document.createElement('section');
@@ -40,11 +41,11 @@ export const registro = () => {
   botonRegistro.textContent = 'Registrarme';
   botonRegistro.addEventListener('click', () => {
     registrar();
-    verificarCorreo();
+    // verificarCorreo();
   });
   seccionGeneral.append(tabla, seccionRegistro);
   // eslint-disable-next-line max-len
-  seccionRegistro.append(logoYummi, inputEmailRegistro, inputContraseñaRegistro, inputContraseñaConfirmar, botonRegistro);
+  seccionRegistro.append(logoYummi, inputEmailRegistro, inputContraseñaRegistro, inputContraseñaConfirmar, botonRegistro, modal());
 
   return seccionGeneral;
 };

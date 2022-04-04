@@ -144,11 +144,11 @@
     }
     .modal1{
         position:absolute;
-        width: 20%;
+        width: 50%;
         height: 39%;
         background-color: white;
         border-radius: 10px;
-        left: 85%;
+        left: 50%;
         top:50%;
         border: 2px solid #FF0606;
         transform: translate(-50%, -50%);
@@ -303,6 +303,9 @@
         position: relative;
         right: 60%;
         bottom: 5%;
+    }
+    #usuarioPublicar{
+        border-radius: 50%;
     }
 
     #publicar{
@@ -678,6 +681,7 @@
         }
         #usuarioPublicar{
             width: 13%;
+            border-radius: 50%;
         }
         #btnPublicar{
             width: 75%;

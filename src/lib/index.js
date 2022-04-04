@@ -6,6 +6,7 @@ export const myFunction = () => {
 }; */
 // Import the functions you need from the SDKs you need
 import { onNavigate } from '../router.js';
+// import { modal } from '../Component/modal.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
 import {
   getAuth,
@@ -42,16 +43,16 @@ export function iniciarSesion() {
     // https://firebase.google.com/docs/reference/js/firebase.User
       const email = user.email;
       const emailVerificado = user.emailVerified;
-        if (emailVerificado === false) {
-          document.getElementById('contmodal').style.opacity = '1';
-          document.getElementById('contmodal').style.visibility = 'visible';
-          document.getElementById('mensajemal').textContent = 'Email no verificado';
+      if (emailVerificado === false) {
+        document.getElementById('contmodal').style.opacity = '1';
+        document.getElementById('contmodal').style.visibility = 'visible';
+        document.getElementById('mensajemal').textContent = 'Email no verificado';
       } else {
         console.log(user);
         onNavigate('/muro');
         // eslint-disable-next-line prefer-template
         document.getElementById('mensajeLogin').textContent = ' Estas Logueado ' + email;
-  }
+      }
     }
   });
 }
@@ -106,23 +107,33 @@ export function registrar() {
       // eslint-disable-next-line no-unused-vars
       .then((userCredential) => {
       // Signed in
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage + errorCode);
-        // ..
-      })
-      .then(() => {
         verificarCorreo();
-        alert('Registrado exitosamente,Porfavor verifica tu correo');
+        // alert('Registrado exitosamente,Porfavor verifica tu correo');
         document.getElementById('contmodal').style.opacity = '1';
         document.getElementById('contmodal').style.visibility = 'visible';
-        document.getElementById('mensajemal').textContent = 'Registrado exitosamente';
-      }); onNavigate('/');
+        document.getElementById('iconomal').src = '../images/palomita.png';
+        document.getElementById('mensajemal').textContent = 'Registrado exitosamente, verifica tu correo';
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        document.getElementById('contmodal').style.opacity = '1';
+        document.getElementById('contmodal').style.visibility = 'visible';
+        document.getElementById('mensajemal').textContent = errorMessage;
+        // ..
+      });
+    // .then(() => {
+    // verificarCorreo();
+    // alert('Registrado exitosamente,Porfavor verifica tu correo');
+    // document.getElementById('contmodal').style.opacity = '1';
+    // document.getElementById('contmodal').style.visibility = 'visible';
+    // document.getElementById('mensajemal').textContent = 'Registrado exitosamente';
+    /* }); */
   } else {
-    alert('Las contraseñas no coinciden');
-  }
+    // alert('Las contraseñas no coinciden');
+    document.getElementById('contmodal').style.opacity = '1';
+    document.getElementById('contmodal').style.visibility = 'visible';
+    document.getElementById('mensajemal').textContent = 'Las contraseñas no coinciden';
+  } // onNavigate('/registro');
 }
 export function cerrar() {
   getAuth().signOut()
@@ -161,9 +172,14 @@ export function google() {
 export function datos() {
   const auth = getAuth();
   const user = auth.currentUser;
-  let datosUsuario = [''];
+  let datosUsuario = {};
   if (user !== null) {
-    datosUsuario = [user.displayName, user.photoURL, user.emailVerified, user.uid];
+    datosUsuario = {
+      nombre: user.displayName,
+      fotoUsuario: user.photoURL,
+      verificado: user.emailVerified,
+      uidUsuario: user.uid,
+    };
     // The user object has basic properties such as display name, email, etc.
      
      /*  email: user.email,
