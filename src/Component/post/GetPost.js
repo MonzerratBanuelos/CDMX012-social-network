@@ -1,21 +1,28 @@
 import {
-  alConseguirRecetas, borrarReceta, conseguirReceta, actualizarReceta, guardarReceta,
+  alConseguirRecetas, borrarReceta, conseguirReceta, actualizarReceta, guardarReceta
 } from '../../lib/firestore.js';
+import { datos } from '../../lib/index.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../../router.js';
-// import { editarPost } from './EditarPost.js';
 
+const datosUsuario = datos();
 export const GetPost = () => {
   const divPost = document.createElement('div');
   divPost.setAttribute('id', 'postPublicado'); // SE ENCARGA DE IMPRIMIR LAS RECETAS QUE ENCUENTRE EN LA BASE DE DATOS
   alConseguirRecetas((querySnapshot) => {
+    while (divPost.firstChild) {
+      divPost.removeChild(divPost.firstChild);
+    }
+    console.log(querySnapshot);
     querySnapshot.forEach((doc) => {
       const publicacion = doc.data();
-      console.log(publicacion);
+      // console.log(publicacion);
       // (console.log(publicacion));
       const post = document.createElement('div');
       post.setAttribute('class', 'post');
       post.setAttribute('id', 'post');
+      const h2NombreUsuario = document.createElement('h2');
+      h2NombreUsuario.textContent = datosUsuario.nombre;
       const h3PublicacionReceta = document.createElement('h3');
       h3PublicacionReceta.textContent = publicacion.receta;
       const ingredientesP = document.createElement('pre');
@@ -100,13 +107,14 @@ export const GetPost = () => {
         formPublicacion.style.visibility = 'visible';
         formPublicacion.style.opacity = '1';
       });
-      post.append(h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, borrarPostBoton, editarPostBoton);
+      post.append(h2NombreUsuario,h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, borrarPostBoton, editarPostBoton);
       // postPublicado.appendChild(post);
-       divPost.append(post);
-     // console.log(divPost);
+      
+      divPost.append(post);
+    // console.log(divPost);
     });
-    // });
-    // });
-  });
+  // });
+  // });
+ });
   return divPost;
 };

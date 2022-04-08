@@ -81,7 +81,7 @@ export const muro = () => {
 
 
   // eslint-disable-next-line max-len
-  
+
   seccionMuro.append(cabeza, publicar, contenedorPerfil, crearPost(), GetPost());
   botonPublicar.addEventListener('click', (e) => {
     e.preventDefault();
