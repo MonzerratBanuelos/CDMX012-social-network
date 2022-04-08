@@ -1,4 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 import {
   getFirestore,
   collection,
@@ -14,15 +15,24 @@ import { app } from './index.js';
 
 const db = getFirestore();
 
-export const guardarReceta = (receta, ingredientes, procedimiento, categoria) => {
+export const guardarReceta = (foto, nombre, receta, ingredientes, procedimiento, categoria, uidUsuario) => {
   if (receta === '' || ingredientes === '' || procedimiento === '') {
-   // console.log('a ok');
+    // console.log('a ok');
   } else {
-    addDoc(collection(db, 'recetas'), {
-      receta, ingredientes, procedimiento, categoria,
+   /*  const auth = getAuth();
+    const user = auth.currentUser; */
+      addDoc(collection(db, 'recetas'), {
+      foto,
+      nombre,
+      receta,
+      ingredientes,
+      procedimiento,
+      categoria,
+      uidUsuario,
     });
   }
 };
+
 export const conseguirRecetas = () => getDocs(collection(db, 'recetas'));
 export const alConseguirRecetas = (callback) => onSnapshot(collection(db, 'recetas'), callback);
 export const borrarReceta = (id) => deleteDoc(doc(db, 'recetas', id));

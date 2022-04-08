@@ -2,10 +2,14 @@ import {
   alConseguirRecetas, borrarReceta, conseguirReceta, actualizarReceta, guardarReceta
 } from '../../lib/firestore.js';
 import { datos } from '../../lib/index.js';
+
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../../router.js';
 
 const datosUsuario = datos();
+console.log(datosUsuario);
+//localStorage.getItem('nombre', datos.displayName);
+//console.log(datosUsuario);
 export const GetPost = () => {
   const divPost = document.createElement('div');
   divPost.setAttribute('id', 'postPublicado'); // SE ENCARGA DE IMPRIMIR LAS RECETAS QUE ENCUENTRE EN LA BASE DE DATOS
@@ -13,7 +17,6 @@ export const GetPost = () => {
     while (divPost.firstChild) {
       divPost.removeChild(divPost.firstChild);
     }
-    console.log(querySnapshot);
     querySnapshot.forEach((doc) => {
       const publicacion = doc.data();
       // console.log(publicacion);
@@ -21,8 +24,11 @@ export const GetPost = () => {
       const post = document.createElement('div');
       post.setAttribute('class', 'post');
       post.setAttribute('id', 'post');
-      const h2NombreUsuario = document.createElement('h2');
-      h2NombreUsuario.textContent = datosUsuario.nombre;
+      const fotoPost = document.createElement('img');
+      fotoPost.setAttribute('class', 'fotoPost');
+      fotoPost.setAttribute('src', publicacion.foto);
+      const h3NombreUsuario = document.createElement('h3');
+      h3NombreUsuario.textContent = publicacion.nombre;
       const h3PublicacionReceta = document.createElement('h3');
       h3PublicacionReceta.textContent = publicacion.receta;
       const ingredientesP = document.createElement('pre');
@@ -84,8 +90,8 @@ export const GetPost = () => {
         formPublicacion.inputProcedimiento.value = recetaEditar.procedimiento;
         editandoReceta = true;
         id = datosReceta.id;
-        const btnPublicar = document.getElementById('btnActualizar');
-        btnPublicar.addEventListener('click', (e) => {
+        const btnActualizar = document.getElementById('btnActualizar');
+        btnActualizar.addEventListener('click', (e) => {
           e.preventDefault();
           const receta = formPublicacion.inputReceta;
           const ingredientes = formPublicacion.inputIngredientes;
@@ -97,7 +103,7 @@ export const GetPost = () => {
           if (editandoReceta === true) {
             console.log('Estoy actualizando');
             actualizarReceta(id, {
-              receta: receta.value, ingredientes: ingredientes.value, procedimiento: procedimiento.value, categoria: categoria.value,
+             receta: receta.value, ingredientes: ingredientes.value, procedimiento: procedimiento.value, categoria: categoria.value,
             });
           }
           formPublicacion.reset();
@@ -107,7 +113,7 @@ export const GetPost = () => {
         formPublicacion.style.visibility = 'visible';
         formPublicacion.style.opacity = '1';
       });
-      post.append(h2NombreUsuario,h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, borrarPostBoton, editarPostBoton);
+      post.append(fotoPost,h3NombreUsuario,h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, borrarPostBoton, editarPostBoton);
       // postPublicado.appendChild(post);
       
       divPost.append(post);

@@ -487,6 +487,25 @@
         background-color: rgba(34, 33, 33, 0.973);
         
     }
+    #btnActualizar{
+        width: 12%;
+        height: 4%;
+        background-color:black;
+        border-radius: 3px;
+        box-shadow: 1px 1px 1px 1px rgba(56, 55, 55, 0.527);
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        position: absolute;
+        top:40%;
+        left: 80%;
+        border:none;
+    }
+    #btnActualizar:hover{
+        background-color: rgba(34, 33, 33, 0.973);
+        
+    }
     #postPublicado{
         width: 75%;
         padding-top: 9.7%;
@@ -525,6 +544,10 @@
         white-space: -pre-wrap;
         white-space: -o-pre-wrap;
         word-wrap: break-word;
+ }
+ .fotoPost{
+     border-radius: 50%;
+     width: 6%;
  }
 }
 

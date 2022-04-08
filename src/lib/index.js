@@ -43,6 +43,9 @@ export function iniciarSesion() {
     // https://firebase.google.com/docs/reference/js/firebase.User
       const email = user.email;
       const emailVerificado = user.emailVerified;
+      const nombreUsuario = user.displayName;
+      const uid = user.uid;
+      const fotoUsuario = user.photoURL;
       if (emailVerificado === false) {
         document.getElementById('contmodal').style.opacity = '1';
         document.getElementById('contmodal').style.visibility = 'visible';
@@ -193,7 +196,8 @@ export function datos() {
       verificado: user.emailVerified,
       uidUsuario: user.uid,
     };
-    localStorage.setItem('uid', user.uid);
+    //localStorage.setItem('uid', user.uid);
+    //localStorage.setItem('nombre', user.displayName);
   }
 
   // The user object has basic properties such as display name, email, etc.

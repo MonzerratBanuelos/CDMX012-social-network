@@ -9,6 +9,7 @@ import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.
 
 export const muro = () => {
   const datosUsuario = datos();
+  console.log(datosUsuario);
 
   const seccionMuro = document.createElement('section');
   seccionMuro.setAttribute('id', 'seccionMuro');
