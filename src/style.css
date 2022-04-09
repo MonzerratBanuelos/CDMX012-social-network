@@ -278,7 +278,7 @@
     #contenedorPerfil{
         top:15%;
         width: 25%;
-        height: 528px;
+        height: 560px;
         background-color: #F8ECB1;
         position: fixed;
         left: 75%;
@@ -289,10 +289,11 @@
         left: 10%;
         background-color: #EBC920;
         width: 80%;
-        height: 80%;
+        height: 88%;
         border-radius: 10px;
         margin-top: 10%;
         margin-bottom: 10%;
+     
     }
     #fotoPortada{
         width: 100%;
@@ -301,37 +302,41 @@
     #fotousuario{
         position: absolute;
         top: 18%;
-        left: 28%;
+        left: 28%; 
         width: 45%;
         border-radius: 50%;
+        border: #EBC920 3px solid;
     }
     #nombreUser{
-        width:fit-content;
+        width:70%;
+        display:flex;
+        flex-wrap: wrap;
         position: relative;
         top: 14%;
-        left: 38%;
-        font-size: 18px;
+        left: 22%;
+        font-size: 20px;
         font-weight: bold;
     }
     #btnCerrarSesion{
-        background: black;
+        background: none;
         border: none;
-        position: relative;
-        top: 40%;
-        color: white;
-        font-size: medium;
+        position: absolute;
+        top: 80%;
+        left: 15%;
+        color: black;
+        font-size: 16px;
         font-weight: bold;
+        text-decoration-line: underline;
         cursor: pointer;
         width: 80%;
-        left: 10%;
         height: 10%;
-        border-radius: 10px;
     }
     #cerrarSesionImg{
         width: 10%;
-        position: relative;
-        right: 60%;
-        bottom: 5%;
+        margin: 1%;
+        position: absolute;
+        right: 75%;
+        bottom: 28%;
     }
 
     #publicar{
@@ -350,11 +355,12 @@
     }
 
     #usuarioPublicar{
-        width: 7%;
+        width: 6%;
         position:absolute;
-        top:16%;
+        top:18%;
         left: 5%;
         border-radius: 50%;
+        border: #EBC920 2px solid;
      }
     #btnPublicar{
         position: absolute;
@@ -516,8 +522,8 @@
     }
    .post{
        background-color: white;
-       width: 79%;
-       padding: 1%;
+       width: 75%;
+       padding: 3%;
        border: #EBC920 1.5px solid;
        border-radius: 5px;
        margin: 1%;
@@ -525,8 +531,15 @@
        top:50%;
        left:8.3%;
        box-shadow: 2px 2px 2px 2px rgba(56, 55, 55, 0.096);
-      
-   }    
+   }  
+   #contenedorInfoUsuario{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+   }
+   /*#menuOpciones{
+    position: ab ;
+   }*/
    .borrarPost{
     position: absolute;
     left: 90%;
@@ -537,6 +550,18 @@
        left: 90%;
        bottom: 60%;
    }
+   
+   .fotoPost{
+    border-radius: 50%;
+    width: 5.5%;
+   } 
+  h3{
+    font-size: large;
+    margin: 1.5%;
+  }
+   h4{
+    font-size: large;
+   }
    pre {
         overflow-x: auto;
         white-space: pre-wrap;
@@ -544,11 +569,10 @@
         white-space: -pre-wrap;
         white-space: -o-pre-wrap;
         word-wrap: break-word;
+        font-family:  'Roboto', sans-serif;
+        font-size: small;
  }
- .fotoPost{
-     border-radius: 50%;
-     width: 6%;
- }
+ 
 }
 
     @media (max-width:500px){
@@ -991,7 +1015,29 @@
         box-shadow: 2px 2px 2px 2px rgba(56, 55, 55, 0.212);
        
     }    
-        .borrarPost{
+    #contenedorInfoUsuario{
+        display:flex;
+        justify-content:flex-start;
+    }
+    .fotoPost{
+        border-radius: 50% ;
+        width:10%;
+        margin: 0 2% 0 0;
+    }
+    h3{
+        margin:0%;
+        align-self: center;
+
+    }
+    #menuOpciones {
+        justify-self: flex-end;
+        font-weight: 900;
+        align-items:center;
+        background: none;
+        border:none;
+    }
+    
+    .borrarPost{
             position: absolute;
             left: 70%;
             bottom :80%;
@@ -1008,6 +1054,23 @@
             white-space: -pre-wrap;
             white-space: -o-pre-wrap;
             word-wrap: break-word;
+            
      }
-     
+     #menuInferior{
+         height : 8%;
+         width: 100%;
+         background: #EBC920;
+         position: fixed;
+         z-index : 9999;
+         bottom: 0%;
+         display:flex;
+         justify-content: space-between;
+         align-items: center;
+     }
+     .iconosFooter {
+         width:20%;
+         height:fit-content;
+         background: #EBC920;
+         border:none;
+     }
     }

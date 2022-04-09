@@ -1,10 +1,8 @@
 // eslint-disable-next-line import/no-cycle
 import { guardarReceta } from '../../lib/firestore.js';
- import { datos } from '../../lib/index.js';
  import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
+
 export const crearPost = () => {
-  const datosUsuario = datos();
-  console.log(datosUsuario);
   const formPublicacion = document.createElement('form');
   formPublicacion.setAttribute('id', 'formPublicacion');
   const labelReceta = document.createElement('label');

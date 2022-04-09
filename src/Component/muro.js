@@ -2,6 +2,7 @@ import { onNavigate } from '../router.js';
 import { cerrar } from '../lib/index.js';
 import { datos } from '../../lib/index.js';
 import { GetPost } from './post/GetPost.js';
+// import { mostrarBoton } from './post/EditarPost.js';
 // import{ publicar } from '../main.js';
 import { crearPost } from './post/CreatePost.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
@@ -48,7 +49,7 @@ export const muro = () => {
   const cajaFoto = document.createElement('div');
   cajaFoto.setAttribute('id', 'cajaFoto');
   const usuarioImg = document.createElement('IMG');
-  usuarioImg.src = datosUsuario.fotoUsuario ? datosUsuario.fotoUsuario : '../images/fotoperfil.png';
+  usuarioImg.src = datosUsuario.fotoUsuario || '../images/fotoperfil.png';
   usuarioImg.setAttribute('id', 'fotousuario');
   const nombreUser = document.createElement('h1');
   nombreUser.setAttribute('id', 'nombreUser');
@@ -60,7 +61,7 @@ export const muro = () => {
   btnCerrarSesion.setAttribute('type', 'button');
   // btnCerrarSesion.setAttribute('class', 'botones');
   btnCerrarSesion.setAttribute('id', 'btnCerrarSesion');
-  btnCerrarSesion.textContent = 'Cerrar Sesion';
+  btnCerrarSesion.textContent = 'Cerrar Sesión';
   btnCerrarSesion.appendChild(cerrarSesionImg);
   btnCerrarSesion.addEventListener('click', () => {
     cerrar();
@@ -80,10 +81,37 @@ export const muro = () => {
   perfilCaja.append(cajaPortada, cajaFoto, nombreUser, btnCerrarSesion);
   contenedorPerfil.appendChild(perfilCaja);
 
+  const menuInferior = document.createElement('footer');
+  menuInferior.setAttribute('id', 'menuInferior');
+
+  const btnInicio = document.createElement('button');
+  btnInicio.setAttribute('class', 'iconosFooter');
+  const iconoCasa = document.createElement('IMG');
+  iconoCasa.src = '../images/lupa.png';
+  btnInicio.appendChild(iconoCasa);
+
+  const btnFiltro = document.createElement('button');
+  btnFiltro.setAttribute('class', 'iconosFooter');
+  const iconoFiltro = document.createElement('IMG');
+  iconoFiltro.src = '../images/filtro.png';
+  btnFiltro.appendChild(iconoFiltro);
+
+  const btnGuardar = document.createElement('button');
+  btnGuardar.setAttribute('class', 'iconosFooter');
+  const iconoGuardar = document.createElement('IMG');
+  iconoGuardar.src = '../images/Vector.png';
+  btnGuardar.appendChild(iconoGuardar);
+
+  const btnPerfil = document.createElement('button');
+  btnPerfil.setAttribute('class', 'iconosFooter');
+  const iconoPerfil = document.createElement('IMG');
+  iconoPerfil.src = '../images/monito.png';
+  btnPerfil.appendChild(iconoPerfil);
+  menuInferior.append(btnInicio, btnFiltro, btnGuardar, btnPerfil);
 
   // eslint-disable-next-line max-len
 
-  seccionMuro.append(cabeza, publicar, contenedorPerfil, crearPost(), GetPost());
+  seccionMuro.append(cabeza, publicar, contenedorPerfil, crearPost(), GetPost(), menuInferior);
   botonPublicar.addEventListener('click', (e) => {
     e.preventDefault();
     const formPublicacion = document.getElementById('formPublicacion');

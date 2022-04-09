@@ -2,6 +2,7 @@ import {
   alConseguirRecetas, borrarReceta, conseguirReceta, actualizarReceta, guardarReceta
 } from '../../lib/firestore.js';
 import { datos } from '../../lib/index.js';
+// import { mostrarBoton } from './EditarPost.js';
 
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../../router.js';
@@ -24,15 +25,29 @@ export const GetPost = () => {
       const post = document.createElement('div');
       post.setAttribute('class', 'post');
       post.setAttribute('id', 'post');
+
+      const contenedorInfoUsuario = document.createElement('div');
+      contenedorInfoUsuario.setAttribute('id', 'contenedorInfoUsuario');
       const fotoPost = document.createElement('img');
       fotoPost.setAttribute('class', 'fotoPost');
-      fotoPost.setAttribute('src', publicacion.foto);
+      fotoPost.setAttribute('src', publicacion.foto || '../images/fotoperfil.png');
+
       const h3NombreUsuario = document.createElement('h3');
-      h3NombreUsuario.textContent = publicacion.nombre;
-      const h3PublicacionReceta = document.createElement('h3');
+      h3NombreUsuario.textContent = publicacion.nombre || publicacion.verificado;
+      
+
+      const menuOpciones = document.createElement('button');
+      menuOpciones.setAttribute('id', 'menuOpciones');
+      menuOpciones.textContent = '...';
+
+      contenedorInfoUsuario.append(fotoPost, h3NombreUsuario, menuOpciones);
+
+      const h3PublicacionReceta = document.createElement('h4');
       h3PublicacionReceta.textContent = publicacion.receta;
+
       const ingredientesP = document.createElement('pre');
       ingredientesP.textContent = publicacion.ingredientes;
+
       const publicacionProcedimientosP = document.createElement('pre');
       publicacionProcedimientosP.textContent = publicacion.procedimiento;
 
@@ -113,7 +128,7 @@ export const GetPost = () => {
         formPublicacion.style.visibility = 'visible';
         formPublicacion.style.opacity = '1';
       });
-      post.append(fotoPost,h3NombreUsuario,h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, borrarPostBoton, editarPostBoton);
+      post.append(contenedorInfoUsuario,h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, borrarPostBoton, editarPostBoton);
       // postPublicado.appendChild(post);
       
       divPost.append(post);
