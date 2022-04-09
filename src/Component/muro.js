@@ -87,7 +87,7 @@ export const muro = () => {
   const btnInicio = document.createElement('button');
   btnInicio.setAttribute('class', 'iconosFooter');
   const iconoCasa = document.createElement('IMG');
-  iconoCasa.src = '../images/lupa.png';
+  iconoCasa.src = '../images/House.png';
   btnInicio.appendChild(iconoCasa);
 
   const btnFiltro = document.createElement('button');
@@ -99,7 +99,7 @@ export const muro = () => {
   const btnGuardar = document.createElement('button');
   btnGuardar.setAttribute('class', 'iconosFooter');
   const iconoGuardar = document.createElement('IMG');
-  iconoGuardar.src = '../images/Vector.png';
+  iconoGuardar.src = '../images/guardar.png';
   btnGuardar.appendChild(iconoGuardar);
 
   const btnPerfil = document.createElement('button');

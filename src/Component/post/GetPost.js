@@ -38,7 +38,9 @@ export const GetPost = () => {
 
       const menuOpciones = document.createElement('button');
       menuOpciones.setAttribute('id', 'menuOpciones');
-      menuOpciones.textContent = '...';
+      const menu = document.createElement('IMG');
+      menu.setAttribute('src', '../images/opciones.png');
+    menuOpciones.appendChild(menu);
 
       contenedorInfoUsuario.append(fotoPost, h3NombreUsuario, menuOpciones);
 
