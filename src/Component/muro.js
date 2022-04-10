@@ -53,7 +53,7 @@ export const muro = () => {
   usuarioImg.setAttribute('id', 'fotousuario');
   const nombreUser = document.createElement('h1');
   nombreUser.setAttribute('id', 'nombreUser');
-  nombreUser.textContent = datosUsuario.nombre ? datosUsuario.nombre : 'Yummy User';
+  nombreUser.textContent = datosUsuario.nombre ? datosUsuario.nombre : datosUsuario.emailUsuario;
   const cerrarSesionImg = document.createElement('IMG');
   cerrarSesionImg.src = '../images/puerta.png';
   cerrarSesionImg.setAttribute('id', 'cerrarSesionImg');

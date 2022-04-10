@@ -861,6 +861,7 @@
             display:flex;
             align-items: flex-end;
             z-index: 100;
+            display: none;
         }
         #pefilCaja, #fotoPortada, #fotousuario, #nombreUser{
             display:none
@@ -876,7 +877,7 @@
             cursor: pointer;
             width: 80%;
             height: 10%;
-            display: block;
+            display: none;
             z-index: 1;
             border-radius: 10px;
         }
@@ -1017,11 +1018,13 @@
     }    
     #contenedorInfoUsuario{
         display:flex;
-        justify-content:flex-start;
+        justify-content:space-between;
+        padding: 2% 0 0 0;
     }
     .fotoPost{
         border-radius: 50% ;
-        width:10%;
+        width:13%;
+        height: 13%;
         margin: 0 2% 0 0;
     }
     h3{
@@ -1031,21 +1034,31 @@
     }
     #menuOpciones {
         justify-self: flex-end;
-        font-weight: 900;
         align-items:center;
         background: none;
         border:none;
     }
-    
+    #contenedorEdEl{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    }
     .borrarPost{
-            position: absolute;
-            left: 70%;
-            bottom :80%;
+            position: relative;
+            width: 100%;
+            border: 1px solid #EBC920;
+            background: #EBC920;
+            visibility: hidden;
+            opacity: 0;
         }
         .editarPost{
-            position: absolute;
-            left: 70%;
-            bottom: 60%;
+            position: relative;
+            width: 100%;
+            border: 1px solid #EBC920;
+            background: #EBC920;
+            visibility: hidden;
+            opacity: 0;
         }
         pre {
             overflow-x: auto;

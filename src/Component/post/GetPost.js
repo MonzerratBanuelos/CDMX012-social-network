@@ -1,17 +1,21 @@
 import {
-  alConseguirRecetas, borrarReceta, conseguirReceta, actualizarReceta, guardarReceta
+  alConseguirRecetas,
+  borrarReceta,
+  conseguirReceta,
+  actualizarReceta,
+  guardarReceta,
 } from '../../lib/firestore.js';
 import { datos } from '../../lib/index.js';
-// import { mostrarBoton } from './EditarPost.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../../router.js';
 
-const datosUsuario = datos();
-console.log(datosUsuario);
 //localStorage.getItem('nombre', datos.displayName);
 //console.log(datosUsuario);
 export const GetPost = () => {
+  const datosUsuario = datos();
+console.log(datosUsuario);
   const divPost = document.createElement('div');
   divPost.setAttribute('id', 'postPublicado'); // SE ENCARGA DE IMPRIMIR LAS RECETAS QUE ENCUENTRE EN LA BASE DE DATOS
   alConseguirRecetas((querySnapshot) => {
@@ -33,28 +37,30 @@ export const GetPost = () => {
       fotoPost.setAttribute('src', publicacion.foto || '../images/fotoperfil.png');
 
       const h3NombreUsuario = document.createElement('h3');
-      h3NombreUsuario.textContent = publicacion.nombre || publicacion.verificado;
+      h3NombreUsuario.textContent = publicacion.nombre || publicacion.emailUsuario;
+      console.log(publicacion.emailUsuario);
+      console.log(publicacion.nombre);
       
+
+      const contenedorEdEl = document.createElement('div');
+      contenedorEdEl.setAttribute('id', 'contenedorEdEl');
 
       const menuOpciones = document.createElement('button');
       menuOpciones.setAttribute('id', 'menuOpciones');
+      menuOpciones.addEventListener('click', () => {
+        console.log('hihihi');
+        borrarPostBoton.style.visibility = 'visible';
+        borrarPostBoton.style.opacity = '1';
+        editarPostBoton.style.visibility = 'visible';
+        editarPostBoton.style.opacity = '1';
+      });
+    
       const menu = document.createElement('IMG');
       menu.setAttribute('src', '../images/opciones.png');
-    menuOpciones.appendChild(menu);
+      menuOpciones.appendChild(menu);
 
-      contenedorInfoUsuario.append(fotoPost, h3NombreUsuario, menuOpciones);
-
-      const h3PublicacionReceta = document.createElement('h4');
-      h3PublicacionReceta.textContent = publicacion.receta;
-
-      const ingredientesP = document.createElement('pre');
-      ingredientesP.textContent = publicacion.ingredientes;
-
-      const publicacionProcedimientosP = document.createElement('pre');
-      publicacionProcedimientosP.textContent = publicacion.procedimiento;
-
-      const publicacionCategoriaP = document.createElement('p');
-      publicacionCategoriaP.textContent = publicacion.categoria;
+      
+     
       const borrarPostBoton = document.createElement('button');
       borrarPostBoton.textContent = 'Borrar';
       // borrarPostBoton.setAttribute('data-id', doc.id);
@@ -91,6 +97,21 @@ export const GetPost = () => {
       editarPostBoton.textContent = 'Editar';
       editarPostBoton.setAttribute('data-id', doc.id);
       editarPostBoton.setAttribute('class', 'editarPost');
+
+      
+      
+      const h3PublicacionReceta = document.createElement('h4');
+      h3PublicacionReceta.textContent = publicacion.receta;
+
+      const ingredientesP = document.createElement('pre');
+      ingredientesP.textContent = publicacion.ingredientes;
+
+      const publicacionProcedimientosP = document.createElement('pre');
+      publicacionProcedimientosP.textContent = publicacion.procedimiento;
+
+      const publicacionCategoriaP = document.createElement('p');
+      publicacionCategoriaP.textContent = publicacion.categoria;
+
       const formPublicacion = document.getElementById('formPublicacion');
       let editandoReceta = false;
       let id = '';
@@ -130,7 +151,15 @@ export const GetPost = () => {
         formPublicacion.style.visibility = 'visible';
         formPublicacion.style.opacity = '1';
       });
-      post.append(contenedorInfoUsuario,h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, borrarPostBoton, editarPostBoton);
+      contenedorInfoUsuario.append(fotoPost, h3NombreUsuario, contenedorEdEl);
+      contenedorEdEl.append(menuOpciones, borrarPostBoton, editarPostBoton);
+      post.append(
+        contenedorInfoUsuario,
+        h3PublicacionReceta,
+        ingredientesP,
+        publicacionProcedimientosP,
+        publicacionCategoriaP,
+      );
       // postPublicado.appendChild(post);
       
       divPost.append(post);

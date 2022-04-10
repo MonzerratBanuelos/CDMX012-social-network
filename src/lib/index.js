@@ -194,6 +194,7 @@ export function datos() {
       nombre: user.displayName,
       fotoUsuario: user.photoURL,
       verificado: user.emailVerified,
+      emailUsuario: user.email,
       uidUsuario: user.uid,
     };
     //localStorage.setItem('uid', user.uid);

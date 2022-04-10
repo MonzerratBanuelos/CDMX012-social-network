@@ -60,7 +60,7 @@ export const crearPost = () => {
   btnPublicar.addEventListener('click', (e) => {
     e.preventDefault();
     console.log('click en prueba');
-    guardarReceta(user.photoURL, user.displayName, inputReceta.value, inputIngredientes.value, inputProcedimiento.value, selectCategoria.value, user.uid);
+    guardarReceta(user.photoURL, user.displayName || user.email, inputReceta.value, inputIngredientes.value, inputProcedimiento.value, selectCategoria.value, user.uid);
     formPublicacion.style.visibility = 'hidden';
     formPublicacion.style.opacity = '0';
   });
