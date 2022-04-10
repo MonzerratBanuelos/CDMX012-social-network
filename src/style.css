@@ -283,6 +283,8 @@
         position: fixed;
         left: 75%;
         display: flex;
+        visibility: visible;
+        opacity: 1;
     }
     #perfilCaja{
         position: relative;
@@ -572,7 +574,10 @@
         font-family:  'Roboto', sans-serif;
         font-size: small;
  }
- 
+ #menuInferior{
+    visibility: hidden;
+
+ }
 }
 
     @media (max-width:500px){
@@ -852,33 +857,84 @@
             text-align: left;
         }
         #contenedorPerfil{
-            width: 25%;
-            height: 528px;
-            position: fixed;
-            left: 75%;
-            display: flex;
+            position:fixed;
+            top:10%;
+            width: 75%;
+            left:25%;
+            height: 82%;
+            position: absolute;
             background-color: transparent;
-            display:flex;
-            align-items: flex-end;
-            z-index: 100;
+            z-index: 1000;
+            margin: 0%;
+            padding: 0%;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            visibility: hidden;
+            transition: smooth;
         }
-        #pefilCaja, #fotoPortada, #fotousuario, #nombreUser{
-            display:none
+        #perfilCaja{
+            position:fixed;
+            width: 75%;
+            height: 82%;
+            background-color:#efdf8e;
+            border: 1px solid #EBC920;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #cajaFoto{
+            width: 50%;
+            height: 25%;
+            background-color:transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #fotousuario{
+            border-radius: 50%;
+            width: 80%;
+            height:90%;
+            border:#EBC920 2px solid;
+        }
+        #nombreUser{
+            margin-left: 20%;
+            margin-right: 15%;
+        }
+        #cajaPortada{
+            position: relative;
+            top:2px;
+            width: 100%;
+            height: 20%;
+            background-color:transparent;
+            display: flex;
+            justify-content: center;
+        }
+
+        }
+        #fotoPortada{
+            justify-self: center;
+            width: 100%;
+            height: 100%;
+            right: 7%;
+            border: 1px solid #EBC920;
         }
         #btnCerrarSesion{
-            background: red;
+            background: black;
             border: none;
-            position: relative;
             top: 40%;
-            color: black;
-            font-size: medium;
-            font-weight: bold;
+            color: white;
             cursor: pointer;
-            width: 80%;
-            height: 10%;
+            width: 60%;
+            height: 5%;
             display: block;
             z-index: 1;
             border-radius: 10px;
+        }
+        #btnCerrarSesion:hover{
+            background: #EBC920;
+            color: black;
         }
         #cerrarSesionImg{
             width: 20%;
@@ -1073,4 +1129,3 @@
          background: #EBC920;
          border:none;
      }
-    }
