@@ -283,6 +283,8 @@
         position: fixed;
         left: 75%;
         display: flex;
+        visibility: visible;
+        opacity: 1;
     }
     #perfilCaja{
         position: relative;
@@ -593,7 +595,10 @@
         font-family:  'Roboto', sans-serif;
         font-size: small;
  }
- 
+ #menuInferior{
+    visibility: hidden;
+
+ }
 }
 
     @media (max-width:500px){
@@ -873,39 +878,84 @@
             text-align: left;
         }
         #contenedorPerfil{
-            width: 25%;
-            height: 528px;
-            position: fixed;
-            left: 75%;
+            position:fixed;
+            top:10%;
+            width: 75%;
+            left:25%;
+            height: 82%;
+            position: absolute;
+            background-color:transparent;
+            z-index: 1000;
+            margin: 0%;
+            padding: 0%;
             display: flex;
-            background-color: transparent;
-            display:flex;
-            align-items: flex-end;
-            z-index: 100;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            transition: smooth;
         }
-        #pefilCaja, #fotoPortada, #fotousuario, #nombreUser{
-            display:none
+        #perfilCaja{
+            position:fixed;
+            width: 75%;
+            height: 82%;
+            background-color:#F8ECB1;
+            border: 1px solid #EBC920;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #fotousuario{
+            position: absolute;
+            top: 10%;
+            left: 28%; 
+            width: 45%;
+            border-radius: 50%;
+            border: #EBC920 3px solid;
+        }
+        #nombreUser{
+            width:70%;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #cajaPortada{
+            position: relative;
+            top:2px;
+            width: 100%;
+            height: 20%;
+            background-color:transparent;
+            display: flex;
+            justify-content: center;
+        }
+
+        }
+        #fotoPortada{
+            justify-self: center;
+            width: 100%;
+            height: 100%;
+            right: 7%;
+            border: 1px solid #EBC920;
         }
         #btnCerrarSesion{
-            background: red;
+            background:none;
             border: none;
-            position: relative;
             top: 40%;
             color: black;
-            font-size: medium;
-            font-weight: bold;
             cursor: pointer;
-            width: 80%;
-            height: 10%;
-            display: block;
+            width: 60%;
+            height: 5%;
             z-index: 1;
-            border-radius: 10px;
+            text-align:auto;
+            font-weight: bold;
         }
         #cerrarSesionImg{
-            width: 20%;
-            position: relative;
-            right: 60%;
-            bottom: 5%;
+            width: 8%;
+            margin: 1%;
+            position: absolute;
+            right: 70%;
+            bottom: 9%;
         }
         form{
             position: fixed;
@@ -1094,4 +1144,3 @@
          background: #EBC920;
          border:none;
      }
-    }
