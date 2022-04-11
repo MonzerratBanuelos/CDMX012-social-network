@@ -1,20 +1,20 @@
 import {
-  alConseguirRecetas, borrarReceta, conseguirReceta, actualizarReceta, guardarReceta
+  alConseguirRecetas, borrarReceta, conseguirReceta, actualizarReceta, guardarReceta,
 } from '../../lib/firestore.js';
 import { datos } from '../../lib/index.js';
-// import { mostrarBoton } from './EditarPost.js';
-
+import { query, collection, orderBy, getFirestore,serverTimestamp} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../../router.js';
 
 const datosUsuario = datos();
 console.log(datosUsuario);
-//localStorage.getItem('nombre', datos.displayName);
-//console.log(datosUsuario);
 export const GetPost = () => {
   const divPost = document.createElement('div');
+  //const db = getFirestore();
+  //const q = query(collection(db, 'recetas'), orderBy('fecha', 'desc'));
   divPost.setAttribute('id', 'postPublicado'); // SE ENCARGA DE IMPRIMIR LAS RECETAS QUE ENCUENTRE EN LA BASE DE DATOS
   alConseguirRecetas((querySnapshot) => {
+    console.log(querySnapshot);
     while (divPost.firstChild) {
       divPost.removeChild(divPost.firstChild);
     }
@@ -35,6 +35,8 @@ export const GetPost = () => {
       const h3NombreUsuario = document.createElement('h3');
       h3NombreUsuario.textContent = publicacion.nombre || publicacion.verificado;
       
+      const h5Fecha = document.createElement('h5');
+      h5Fecha.textContent = publicacion.fechaIString;
 
       const menuOpciones = document.createElement('button');
       menuOpciones.setAttribute('id', 'menuOpciones');
@@ -42,7 +44,7 @@ export const GetPost = () => {
       menu.setAttribute('src', '../images/opciones.png');
     menuOpciones.appendChild(menu);
 
-      contenedorInfoUsuario.append(fotoPost, h3NombreUsuario, menuOpciones);
+      contenedorInfoUsuario.append(fotoPost, h3NombreUsuario, menuOpciones, h5Fecha);
 
       const h3PublicacionReceta = document.createElement('h4');
       h3PublicacionReceta.textContent = publicacion.receta;
@@ -138,6 +140,6 @@ export const GetPost = () => {
     });
   // });
   // });
- });
+  });
   return divPost;
 };

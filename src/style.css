@@ -863,13 +863,14 @@
             left:25%;
             height: 82%;
             position: absolute;
-            background-color: transparent;
+            background-color:transparent;
             z-index: 1000;
             margin: 0%;
             padding: 0%;
             display: flex;
             flex-wrap: nowrap;
             justify-content: center;
+            align-items: center;
             visibility: hidden;
             transition: smooth;
         }
@@ -877,30 +878,26 @@
             position:fixed;
             width: 75%;
             height: 82%;
-            background-color:#efdf8e;
+            background-color:#F8ECB1;
             border: 1px solid #EBC920;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        #cajaFoto{
-            width: 50%;
-            height: 25%;
-            background-color:transparent;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
         #fotousuario{
+            position: absolute;
+            top: 10%;
+            left: 28%; 
+            width: 45%;
             border-radius: 50%;
-            width: 80%;
-            height:90%;
-            border:#EBC920 2px solid;
+            border: #EBC920 3px solid;
         }
         #nombreUser{
-            margin-left: 20%;
-            margin-right: 15%;
+            width:70%;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
         }
         #cajaPortada{
             position: relative;
@@ -921,26 +918,23 @@
             border: 1px solid #EBC920;
         }
         #btnCerrarSesion{
-            background: black;
+            background:none;
             border: none;
             top: 40%;
-            color: white;
+            color: black;
             cursor: pointer;
             width: 60%;
             height: 5%;
-            display: block;
             z-index: 1;
-            border-radius: 10px;
-        }
-        #btnCerrarSesion:hover{
-            background: #EBC920;
-            color: black;
+            text-align:auto;
+            font-weight: bold;
         }
         #cerrarSesionImg{
-            width: 20%;
-            position: relative;
-            right: 60%;
-            bottom: 5%;
+            width: 8%;
+            margin: 1%;
+            position: absolute;
+            right: 70%;
+            bottom: 9%;
         }
         form{
             position: fixed;

@@ -54,15 +54,15 @@ export const muro = () => {
   const nombreUser = document.createElement('h1');
   nombreUser.setAttribute('id', 'nombreUser');
   nombreUser.textContent = datosUsuario.nombre ? datosUsuario.nombre : 'Yummy User';
-  /*   const cerrarSesionImg = document.createElement('IMG');
+  const cerrarSesionImg = document.createElement('IMG');
   cerrarSesionImg.src = '../images/puerta.png';
-  cerrarSesionImg.setAttribute('id', 'cerrarSesionImg'); */
+  cerrarSesionImg.setAttribute('id', 'cerrarSesionImg'); 
   const btnCerrarSesion = document.createElement('button');// cerrar sesión cuenta
   btnCerrarSesion.setAttribute('type', 'button');
-  // btnCerrarSesion.setAttribute('class', 'botones');
+  btnCerrarSesion.setAttribute('class', 'botones');
   btnCerrarSesion.setAttribute('id', 'btnCerrarSesion');
   btnCerrarSesion.textContent = 'Cerrar Sesión';
-  // btnCerrarSesion.appendChild(cerrarSesionImg);
+  btnCerrarSesion.appendChild(cerrarSesionImg);
   btnCerrarSesion.addEventListener('click', () => {
     cerrar();
     onNavigate('/');
