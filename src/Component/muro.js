@@ -1,11 +1,10 @@
 import { onNavigate } from '../router.js';
-import { cerrar } from '../lib/index.js';
-import { datos } from '../../lib/index.js';
+import { datos, cerrar } from '../../lib/index.js';
 import { GetPost } from './post/GetPost.js';
+
 // import { mostrarBoton } from './post/EditarPost.js';
 // import{ publicar } from '../main.js';
 import { crearPost } from './post/CreatePost.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 // import { deletePost } from './post/DeletePost.js';
 
 export const muro = () => {

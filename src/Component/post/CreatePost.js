@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { guardarReceta } from '../../lib/firestore.js';
- import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
+import { getAuth } from '../../lib/Imports-firebase-store.js';
 
 export const crearPost = () => {
   const formPublicacion = document.createElement('form');
@@ -57,10 +57,19 @@ export const crearPost = () => {
   btnPublicar.setAttribute('id', 'btnPostear');
   const auth = getAuth();
   const user = auth.currentUser;
+  console.log(user);
   btnPublicar.addEventListener('click', (e) => {
     e.preventDefault();
     console.log('click en prueba');
-    guardarReceta(user.photoURL, user.displayName || user.email, inputReceta.value, inputIngredientes.value, inputProcedimiento.value, selectCategoria.value, user.uid);
+    guardarReceta(
+      user.photoURL,
+      user.displayName || user.email,
+      inputReceta.value,
+      inputIngredientes.value,
+      inputProcedimiento.value,
+      selectCategoria.value,
+      user.uid,
+    );
     formPublicacion.style.visibility = 'hidden';
     formPublicacion.style.opacity = '0';
   });

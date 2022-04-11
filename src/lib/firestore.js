@@ -1,5 +1,5 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
+// import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
+// import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 import {
   getFirestore,
   collection,
@@ -10,8 +10,8 @@ import {
   onSnapshot,
   doc,
   updateDoc,
-} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js';
-import { app } from './index.js';
+} from './Imports-firebase-store.js';
+import { app } from './llavesFirebase.js';
 
 const db = getFirestore();
 
@@ -19,9 +19,9 @@ export const guardarReceta = (foto, nombre, receta, ingredientes, procedimiento,
   if (receta === '' || ingredientes === '' || procedimiento === '') {
     // console.log('a ok');
   } else {
-   /*  const auth = getAuth();
+  /*  const auth = getAuth();
     const user = auth.currentUser; */
-      addDoc(collection(db, 'recetas'), {
+    addDoc(collection(db, 'recetas'), {
       foto,
       nombre,
       receta,

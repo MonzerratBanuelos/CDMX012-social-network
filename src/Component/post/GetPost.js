@@ -3,19 +3,18 @@ import {
   borrarReceta,
   conseguirReceta,
   actualizarReceta,
-  guardarReceta,
+  // guardarReceta,
 } from '../../lib/firestore.js';
 import { datos } from '../../lib/index.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../../router.js';
 
-//localStorage.getItem('nombre', datos.displayName);
-//console.log(datosUsuario);
+// localStorage.getItem('nombre', datos.displayName);
+// console.log(datosUsuario);
 export const GetPost = () => {
   const datosUsuario = datos();
-console.log(datosUsuario);
+  console.log(datosUsuario);
   const divPost = document.createElement('div');
   divPost.setAttribute('id', 'postPublicado'); // SE ENCARGA DE IMPRIMIR LAS RECETAS QUE ENCUENTRE EN LA BASE DE DATOS
   alConseguirRecetas((querySnapshot) => {
@@ -40,27 +39,39 @@ console.log(datosUsuario);
       h3NombreUsuario.textContent = publicacion.nombre || publicacion.emailUsuario;
       console.log(publicacion.emailUsuario);
       console.log(publicacion.nombre);
-      
 
       const contenedorEdEl = document.createElement('div');
       contenedorEdEl.setAttribute('id', 'contenedorEdEl');
 
       const menuOpciones = document.createElement('button');
       menuOpciones.setAttribute('id', 'menuOpciones');
+      let valorVisual = true;
+      menuOpciones.setAttribute('value', valorVisual);
       menuOpciones.addEventListener('click', () => {
-        console.log('hihihi');
-        borrarPostBoton.style.visibility = 'visible';
-        borrarPostBoton.style.opacity = '1';
-        editarPostBoton.style.visibility = 'visible';
-        editarPostBoton.style.opacity = '1';
-      });
-    
+        valorVisual = false;
+        console.log(valorVisual);
+        if (valorVisual === false) {
+          console.log('Estoy en false');
+          borrarPostBoton.style.visibility = 'visible';
+          borrarPostBoton.style.opacity = '1';
+          editarPostBoton.style.visibility = 'visible';
+          editarPostBoton.style.opacity = '1';
+          valorVisual = true;
+          console.log(valorVisual);
+        } else {
+          console.log('estoy en true');
+          borrarPostBoton.style.visibility = 'hidden';
+          borrarPostBoton.style.opacity = '0';
+          editarPostBoton.style.visibility = 'hidden';
+          editarPostBoton.style.opacity = '0';
+        }
+        valorVisual = true;
+        console.log(valorVisual);
+      }); valorVisual = true;
       const menu = document.createElement('IMG');
       menu.setAttribute('src', '../images/opciones.png');
       menuOpciones.appendChild(menu);
 
-      
-     
       const borrarPostBoton = document.createElement('button');
       borrarPostBoton.textContent = 'Borrar';
       // borrarPostBoton.setAttribute('data-id', doc.id);
@@ -98,8 +109,6 @@ console.log(datosUsuario);
       editarPostBoton.setAttribute('data-id', doc.id);
       editarPostBoton.setAttribute('class', 'editarPost');
 
-      
-      
       const h3PublicacionReceta = document.createElement('h4');
       h3PublicacionReceta.textContent = publicacion.receta;
 
@@ -141,7 +150,10 @@ console.log(datosUsuario);
           if (editandoReceta === true) {
             console.log('Estoy actualizando');
             actualizarReceta(id, {
-             receta: receta.value, ingredientes: ingredientes.value, procedimiento: procedimiento.value, categoria: categoria.value,
+              receta: receta.value,
+              ingredientes: ingredientes.value,
+              procedimiento: procedimiento.value,
+              categoria: categoria.value,
             });
           }
           formPublicacion.reset();
@@ -161,12 +173,12 @@ console.log(datosUsuario);
         publicacionCategoriaP,
       );
       // postPublicado.appendChild(post);
-      
+
       divPost.append(post);
     // console.log(divPost);
     });
   // });
   // });
- });
+  });
   return divPost;
 };

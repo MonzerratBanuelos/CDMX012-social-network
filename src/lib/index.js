@@ -5,7 +5,6 @@ export const myFunction = () => {
   console.log('Hola mundo!');
 }; */
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -15,25 +14,12 @@ import {
   sendEmailVerification,
   GoogleAuthProvider,
   signInWithPopup,
-} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
+} from './Imports-firebase-store.js';
 import { onNavigate } from '../router.js';
 // import { modal } from '../Component/modal.js';
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-export const firebaseConfig = {
-  apiKey: 'AIzaSyAC5Xdg_jFGY0p6OJSwkX52fkXRqdKnjqw',
-  authDomain: 'yummy-65cbb.firebaseapp.com',
-  projectId: 'yummy-65cbb',
-  storageBucket: 'yummy-65cbb.appspot.com',
-  messagingSenderId: '857667491932',
-  appId: '1:857667491932:web:94c7de43766d973cedae99',
-};
-
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+
 export const proveedor = new GoogleAuthProvider();
 export function iniciarSesion() {
   const autentificar = getAuth();
@@ -109,12 +95,13 @@ sendPasswordResetEmail(auth, email)
 } */
 export function registrar() {
   // const nombreRegistro = document.getElementById('nombreRegistro').value;
+  const userName = document.getElementById('userName').value;
   const email = document.getElementById('emailRegi').value;
   const contraseña = document.getElementById('contraseñaRegi').value;
   const contraseñaConfirmar = document.getElementById('contraseñaRegidos').value;
   const auth = getAuth();
   if (contraseña === contraseñaConfirmar) {
-    createUserWithEmailAndPassword(auth, email, contraseña)
+    createUserWithEmailAndPassword(auth, email, contraseña, userName)
       // eslint-disable-next-line no-unused-vars
       .then((userCredential) => {
         verificarCorreo();
@@ -197,8 +184,8 @@ export function datos() {
       emailUsuario: user.email,
       uidUsuario: user.uid,
     };
-    //localStorage.setItem('uid', user.uid);
-    //localStorage.setItem('nombre', user.displayName);
+    // localStorage.setItem('uid', user.uid);
+    // localStorage.setItem('nombre', user.displayName);
   }
 
   // The user object has basic properties such as display name, email, etc.
