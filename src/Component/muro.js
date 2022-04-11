@@ -1,3 +1,4 @@
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 import { onNavigate } from '../router.js';
 import { datos, cerrar } from '../../lib/index.js';
 import { GetPost } from './post/GetPost.js';
@@ -38,7 +39,7 @@ export const muro = () => {
 
   const contenedorPerfil = document.createElement('article');
   contenedorPerfil.setAttribute('id', 'contenedorPerfil');
-  const perfilCaja = document.createElement('section');
+  const perfilCaja = document.createElement('div');
   perfilCaja.setAttribute('id', 'perfilCaja');
   const cajaPortada = document.createElement('div');
   cajaPortada.setAttribute('id', 'cajaPortada');
@@ -55,10 +56,10 @@ export const muro = () => {
   nombreUser.textContent = datosUsuario.nombre ? datosUsuario.nombre : datosUsuario.emailUsuario;
   const cerrarSesionImg = document.createElement('IMG');
   cerrarSesionImg.src = '../images/puerta.png';
-  cerrarSesionImg.setAttribute('id', 'cerrarSesionImg');
+  cerrarSesionImg.setAttribute('id', 'cerrarSesionImg'); 
   const btnCerrarSesion = document.createElement('button');// cerrar sesión cuenta
   btnCerrarSesion.setAttribute('type', 'button');
-  // btnCerrarSesion.setAttribute('class', 'botones');
+  btnCerrarSesion.setAttribute('class', 'botones');
   btnCerrarSesion.setAttribute('id', 'btnCerrarSesion');
   btnCerrarSesion.textContent = 'Cerrar Sesión';
   btnCerrarSesion.appendChild(cerrarSesionImg);
@@ -107,9 +108,15 @@ export const muro = () => {
   iconoPerfil.src = '../images/monito.png';
   btnPerfil.appendChild(iconoPerfil);
   menuInferior.append(btnInicio, btnFiltro, btnGuardar, btnPerfil);
-
+  btnPerfil.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (contenedorPerfil.style.visibility === 'hidden') {
+      contenedorPerfil.style.visibility = 'visible';
+    } else {
+      contenedorPerfil.style.visibility = 'hidden';
+    }
+  });
   // eslint-disable-next-line max-len
-
   seccionMuro.append(cabeza, publicar, contenedorPerfil, crearPost(), GetPost(), menuInferior);
   botonPublicar.addEventListener('click', (e) => {
     e.preventDefault();

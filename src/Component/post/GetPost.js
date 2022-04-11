@@ -1,4 +1,5 @@
 import {
+
   alConseguirRecetas,
   borrarReceta,
   conseguirReceta,
@@ -12,12 +13,26 @@ import { onNavigate } from '../../router.js';
 
 // localStorage.getItem('nombre', datos.displayName);
 // console.log(datosUsuario);
+
+  alConseguirRecetas, borrarReceta, conseguirReceta, actualizarReceta, guardarReceta,
+} from '../../lib/firestore.js';
+import { datos } from '../../lib/index.js';
+import { query, collection, orderBy, getFirestore,serverTimestamp} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js';
+// eslint-disable-next-line import/no-cycle
+import { onNavigate } from '../../router.js';
+
+const datosUsuario = datos();
+console.log(datosUsuario);
+
 export const GetPost = () => {
   const datosUsuario = datos();
   console.log(datosUsuario);
   const divPost = document.createElement('div');
+  //const db = getFirestore();
+  //const q = query(collection(db, 'recetas'), orderBy('fecha', 'desc'));
   divPost.setAttribute('id', 'postPublicado'); // SE ENCARGA DE IMPRIMIR LAS RECETAS QUE ENCUENTRE EN LA BASE DE DATOS
   alConseguirRecetas((querySnapshot) => {
+    console.log(querySnapshot);
     while (divPost.firstChild) {
       divPost.removeChild(divPost.firstChild);
     }
@@ -36,12 +51,21 @@ export const GetPost = () => {
       fotoPost.setAttribute('src', publicacion.foto || '../images/fotoperfil.png');
 
       const h3NombreUsuario = document.createElement('h3');
+
       h3NombreUsuario.textContent = publicacion.nombre || publicacion.emailUsuario;
       console.log(publicacion.emailUsuario);
       console.log(publicacion.nombre);
 
       const contenedorEdEl = document.createElement('div');
       contenedorEdEl.setAttribute('id', 'contenedorEdEl');
+
+      h3NombreUsuario.textContent = publicacion.nombre || publicacion.verificado;
+
+      
+      const h5Fecha = document.createElement('h5');
+      h5Fecha.textContent = publicacion.fechaIString;
+
+
 
       const menuOpciones = document.createElement('button');
       menuOpciones.setAttribute('id', 'menuOpciones');
@@ -69,8 +93,31 @@ export const GetPost = () => {
         console.log(valorVisual);
       }); valorVisual = true;
       const menu = document.createElement('IMG');
+
       menu.setAttribute('src', '../images/opciones.png');
       menuOpciones.appendChild(menu);
+
+
+      menu.setAttribute('src', '../images/Puntos.png');
+      menuOpciones.appendChild(menu);
+
+      contenedorInfoUsuario.append(fotoPost, h3NombreUsuario, menuOpciones, h5Fecha);
+
+      const h3PublicacionReceta = document.createElement('h4');
+      h3PublicacionReceta.textContent = publicacion.receta;
+
+      const ingredientesP = document.createElement('pre');
+      ingredientesP.textContent = publicacion.ingredientes;
+
+      const publicacionProcedimientosP = document.createElement('pre');
+      publicacionProcedimientosP.textContent = publicacion.procedimiento;
+
+      const publicacionCategoriaP = document.createElement('p');
+      publicacionCategoriaP.textContent = publicacion.categoria;
+      const categoriaImg = document.createElement('img');
+      categoriaImg.setAttribute('class', 'categoriaImg');
+      categoriaImg.setAttribute('src', '../images/plato.png');
+
 
       const borrarPostBoton = document.createElement('button');
       borrarPostBoton.textContent = 'Borrar';
@@ -163,6 +210,7 @@ export const GetPost = () => {
         formPublicacion.style.visibility = 'visible';
         formPublicacion.style.opacity = '1';
       });
+
       contenedorInfoUsuario.append(fotoPost, h3NombreUsuario, contenedorEdEl);
       contenedorEdEl.append(menuOpciones, borrarPostBoton, editarPostBoton);
       post.append(
@@ -172,6 +220,9 @@ export const GetPost = () => {
         publicacionProcedimientosP,
         publicacionCategoriaP,
       );
+
+      post.append(contenedorInfoUsuario,h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, categoriaImg, borrarPostBoton, editarPostBoton);
+
       // postPublicado.appendChild(post);
 
       divPost.append(post);
