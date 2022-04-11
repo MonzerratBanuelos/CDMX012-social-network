@@ -2,7 +2,10 @@
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js';
 import { guardarReceta } from '../../lib/firestore.js';
+import { getAuth } from '../../lib/Imports-firebase-store.js';
+
 //import { obtenerUrl, uploadImage } from './storage.js';
+
 
 export const crearPost = () => {
   const formPublicacion = document.createElement('form');
@@ -62,6 +65,20 @@ export const crearPost = () => {
   btnPublicar.setAttribute('id', 'btnPostear');
   const auth = getAuth();
   const user = auth.currentUser;
+
+  console.log(user);
+  btnPublicar.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('click en prueba');
+    guardarReceta(
+      user.photoURL,
+      user.displayName || user.email,
+      inputReceta.value,
+      inputIngredientes.value,
+      inputProcedimiento.value,
+      selectCategoria.value,
+      user.uid,
+
   const fecha = serverTimestamp();
   const fechaI = new Date();
   const fechaIString = `${fechaI.getDate()}/${fechaI.getMonth() + 1}/${fechaI.getFullYear()}`;

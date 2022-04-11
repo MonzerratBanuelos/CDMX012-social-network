@@ -1,8 +1,8 @@
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 import { onNavigate } from '../router.js';
-import { cerrar } from '../lib/index.js';
-import { datos } from '../../lib/index.js';
+import { datos, cerrar } from '../../lib/index.js';
 import { GetPost } from './post/GetPost.js';
+
 // import { mostrarBoton } from './post/EditarPost.js';
 // import{ publicar } from '../main.js';
 import { crearPost } from './post/CreatePost.js';
@@ -53,7 +53,7 @@ export const muro = () => {
   usuarioImg.setAttribute('id', 'fotousuario');
   const nombreUser = document.createElement('h1');
   nombreUser.setAttribute('id', 'nombreUser');
-  nombreUser.textContent = datosUsuario.nombre ? datosUsuario.nombre : 'Yummy User';
+  nombreUser.textContent = datosUsuario.nombre ? datosUsuario.nombre : datosUsuario.emailUsuario;
   const cerrarSesionImg = document.createElement('IMG');
   cerrarSesionImg.src = '../images/puerta.png';
   cerrarSesionImg.setAttribute('id', 'cerrarSesionImg'); 

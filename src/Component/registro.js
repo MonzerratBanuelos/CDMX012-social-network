@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 // import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
-import { registrar, verificarCorreo } from '../lib/index.js';
+import { registrar } from '../lib/index.js';
 import { modal } from './modal.js';
 
 export const registro = () => {
@@ -19,10 +19,10 @@ export const registro = () => {
   logoYummi.src = './images/logo.png';
   logoYummi.setAttribute('id', 'logoinicio');
   logoYummi.setAttribute('alt', 'Yummy, bienvenido a tu mundo de cocina');
-  
+
   const inputNombreRegistro = document.createElement('input');
   inputNombreRegistro.setAttribute('type', 'text');
-  inputNombreRegistro.setAttribute('id', 'nombreRegistro');
+  inputNombreRegistro.setAttribute('id', 'userName');
   inputNombreRegistro.setAttribute('placeholder', 'Nombre');
 
   const inputEmailRegistro = document.createElement('input');
