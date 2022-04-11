@@ -34,13 +34,12 @@ export const GetPost = () => {
 
       const h3NombreUsuario = document.createElement('h3');
       h3NombreUsuario.textContent = publicacion.nombre || publicacion.verificado;
-      
 
       const menuOpciones = document.createElement('button');
       menuOpciones.setAttribute('id', 'menuOpciones');
       const menu = document.createElement('IMG');
-      menu.setAttribute('src', '../images/opciones.png');
-    menuOpciones.appendChild(menu);
+      menu.setAttribute('src', '../images/Puntos.png');
+      menuOpciones.appendChild(menu);
 
       contenedorInfoUsuario.append(fotoPost, h3NombreUsuario, menuOpciones);
 
@@ -55,6 +54,10 @@ export const GetPost = () => {
 
       const publicacionCategoriaP = document.createElement('p');
       publicacionCategoriaP.textContent = publicacion.categoria;
+      const categoriaImg = document.createElement('img');
+      categoriaImg.setAttribute('class', 'categoriaImg');
+      categoriaImg.setAttribute('src', '../images/plato.png');
+
       const borrarPostBoton = document.createElement('button');
       borrarPostBoton.textContent = 'Borrar';
       // borrarPostBoton.setAttribute('data-id', doc.id);
@@ -130,7 +133,7 @@ export const GetPost = () => {
         formPublicacion.style.visibility = 'visible';
         formPublicacion.style.opacity = '1';
       });
-      post.append(contenedorInfoUsuario,h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, borrarPostBoton, editarPostBoton);
+      post.append(contenedorInfoUsuario,h3PublicacionReceta, ingredientesP, publicacionProcedimientosP, publicacionCategoriaP, categoriaImg, borrarPostBoton, editarPostBoton);
       // postPublicado.appendChild(post);
       
       divPost.append(post);
