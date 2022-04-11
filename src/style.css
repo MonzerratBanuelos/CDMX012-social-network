@@ -321,22 +321,21 @@
         background: none;
         border: none;
         position: absolute;
-        top: 80%;
-        left: 15%;
+        top: 89%;
+        left: 27%;
         color: black;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: bold;
-        text-decoration-line: underline;
         cursor: pointer;
-        width: 80%;
+        width: 50%;
         height: 10%;
     }
     #cerrarSesionImg{
         width: 10%;
-        margin: 1%;
+        margin: 2%;
         position: absolute;
-        right: 75%;
-        bottom: 28%;
+        right: 85%;
+        bottom: 31%;
     }
 
     #publicar{
@@ -437,7 +436,7 @@
        border: 1.5px solid #EBC920;
        border-radius: 5px;
        padding: 2%;
-      
+       font-family:  'Roboto', sans-serif;
     
     }
     #labelProcedimiento{
@@ -454,6 +453,7 @@
         border: 1.5px solid #EBC920;
        border-radius: 5px;
        padding: 2%;
+       font-family:  'Roboto', sans-serif;
     }
     #labelCategoria{
         position:absolute;
@@ -537,18 +537,25 @@
     justify-content: flex-start;
     align-items: center;
    }
-   /*#menuOpciones{
-    position: ab ;
-   }*/
+   #menuOpciones{
+    cursor: pointer;
+    position: absolute;
+    left: 92.5%;
+    top: 20px;
+    background: none;
+    border: none;
+   }
    .borrarPost{
     position: absolute;
     left: 90%;
     bottom :80%;
+    display: none;
    }
    .editarPost{
        position: absolute;
        left: 90%;
        bottom: 60%;
+       display: none;
    }
    
    .fotoPost{
@@ -562,6 +569,20 @@
    h4{
     font-size: large;
    }
+   
+   .categoriaImg{
+       width: 2%;
+       position: absolute;
+       top: 100px;
+       left: 82.5%;
+}
+   }
+   p{
+    position: absolute;
+    top: 85px;
+    left: 85%;
+
+}
    pre {
         overflow-x: auto;
         white-space: pre-wrap;
