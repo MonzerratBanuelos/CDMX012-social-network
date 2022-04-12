@@ -1,6 +1,8 @@
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
+// eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../router.js';
+// eslint-disable-next-line import/no-unresolved
 import { datos, cerrar } from '../../lib/index.js';
+// eslint-disable-next-line import/no-cycle
 import { GetPost } from './post/GetPost.js';
 
 // import { mostrarBoton } from './post/EditarPost.js';
@@ -10,8 +12,6 @@ import { crearPost } from './post/CreatePost.js';
 
 export const muro = () => {
   const datosUsuario = datos();
- // console.log(datosUsuario);
-
   const seccionMuro = document.createElement('section');
   seccionMuro.setAttribute('id', 'seccionMuro');
   // Head
@@ -56,7 +56,7 @@ export const muro = () => {
   nombreUser.textContent = datosUsuario.nombre ? datosUsuario.nombre : datosUsuario.emailUsuario;
   const cerrarSesionImg = document.createElement('IMG');
   cerrarSesionImg.src = '../images/puerta.png';
-  cerrarSesionImg.setAttribute('id', 'cerrarSesionImg'); 
+  cerrarSesionImg.setAttribute('id', 'cerrarSesionImg');
   const btnCerrarSesion = document.createElement('button');// cerrar sesión cuenta
   btnCerrarSesion.setAttribute('type', 'button');
   btnCerrarSesion.setAttribute('id', 'btnCerrarSesion');

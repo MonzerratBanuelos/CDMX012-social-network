@@ -1,10 +1,5 @@
 import {
-  query,
-  collection,
-  orderBy,
   getFirestore,
-  serverTimestamp,
-  arrayUnion,
 } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js';
 import {
   alConseguirRecetas,
@@ -12,6 +7,7 @@ import {
   conseguirReceta,
   actualizarReceta,
   sumarMeGusta,
+  restarMeGusta,
   // guardarReceta,
 } from '../../lib/firestore.js';
 import { datos } from '../../lib/index.js';
@@ -61,7 +57,7 @@ export const GetPost = () => {
       // console.log(publicacion.emailUsuario);
       // console.log(publicacion.nombre);
 
-      const h5Fecha = document.createElement('h5');
+      const h5Fecha = document.createElement('h6');
       h5Fecha.textContent = publicacion.fechaIString;
 
       const h4PublicacionReceta = document.createElement('h4');
@@ -207,19 +203,31 @@ export const GetPost = () => {
       btnMeGusta.setAttribute('class', 'btnMeGusta');
       btnMeGusta.setAttribute('data-id', doc.id);
       btnMeGusta.setAttribute('value', false);
-      console.log(btnMeGusta.value);
-      btnMeGusta.addEventListener('click', async () => {
-        console.log('Me gusta');
-        btnMeGusta.setAttribute('value', true);
-        console.log(btnMeGusta.value);
-        sumarMeGusta(doc.id, uidUsuario);
-      });
+
       const iconoMeGusta = document.createElement('IMG');
       iconoMeGusta.setAttribute('class', 'iconoMeGusta');
       iconoMeGusta.setAttribute('data-id', uidUsuario);
-      iconoMeGusta.src = '../images/nomeGusta.png'/* ? '../images/meGusta.png' : '../images/nomeGusta.png' */;
+      const ObjectMeGusta = publicacion.meGusta;
+      const arrayTotalMeGusta = Object.values(ObjectMeGusta);
+      if (arrayTotalMeGusta.includes(uidUsuario)) {
+        iconoMeGusta.src = '../images/meGusta.png';
+      } else {
+        iconoMeGusta.src = '../images/nomeGusta.png';
+      }
+      btnMeGusta.addEventListener('click', () => {
+        if (arrayTotalMeGusta.includes(uidUsuario)) {
+          restarMeGusta(doc.id, uidUsuario);
+          console.log('Estoy quitando');
+        } else {
+          sumarMeGusta(doc.id, uidUsuario);
+          console.log('Estoy dando');
+        }
+      });
 
       btnMeGusta.append(iconoMeGusta);
+      const numeroMeGusta = document.createElement('h5');
+      const problema = publicacion.meGusta.length;
+      numeroMeGusta.textContent = problema + ' Me gusta';
 
       const formPublicacion = document.getElementById('formPublicacion');
       let editandoReceta = false;
@@ -233,6 +241,7 @@ export const GetPost = () => {
         publicacionCategoriaP,
         plato,
         btnMeGusta,
+        numeroMeGusta,
       );
 
       // postPublicado.appendChild(post);

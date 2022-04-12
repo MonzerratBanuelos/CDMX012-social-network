@@ -16,6 +16,7 @@ import {
   orderBy,
   query,
   arrayUnion,
+  arrayRemove,
 } from './Imports-firebase-store.js';
 import { app } from './llavesFirebase.js';
 
@@ -51,4 +52,5 @@ export const borrarReceta = (id) => deleteDoc(doc(db, 'recetas', id));
 export const conseguirReceta = (id) => getDoc(doc(db, 'recetas', id));
 export const actualizarReceta = (id, nuevosCampos) => updateDoc(doc(db, 'recetas', id), nuevosCampos);
 // export const storage = getStorage(app);
-export const sumarMeGusta = (id, uidUsuario)=> updateDoc(doc(db, 'recetas', id), { meGusta: arrayUnion(uidUsuario) });
+export const sumarMeGusta = (id, uidUsuario) => updateDoc(doc(db, 'recetas', id), { meGusta: arrayUnion(uidUsuario) });
+export const restarMeGusta = (id, uidUsuario) => updateDoc(doc(db, 'recetas', id), { meGusta: arrayRemove(uidUsuario) });

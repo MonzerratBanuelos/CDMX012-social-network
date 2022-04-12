@@ -1,10 +1,10 @@
 // eslint-disable-next-line import/no-cycle
+// eslint-disable-next-line import/no-unresolved
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js';
 import { guardarReceta } from '../../lib/firestore.js';
 import { getAuth } from '../../lib/Imports-firebase-store.js';
 
-//import { obtenerUrl, uploadImage } from './storage.js';
-
+// import { obtenerUrl, uploadImage } from './storage.js';
 
 export const crearPost = () => {
   const formPublicacion = document.createElement('form');
@@ -53,7 +53,7 @@ export const crearPost = () => {
   const catVeganoImg = document.createElement('IMG');
   catVeganoImg.src = '../images/PolloVegano.png';
   selectCategoria.append(catSalado, catDulce, catVegano);
-/*   const fotoReceta = document.createElement('input');
+  /*   const fotoReceta = document.createElement('input');
   fotoReceta.setAttribute('id', 'fotoreceta');
   fotoReceta.setAttribute('type', 'file'); */
   const btnActualizar = document.createElement('button');
@@ -65,15 +65,13 @@ export const crearPost = () => {
   const auth = getAuth();
   const user = auth.currentUser;
 
-
   const fecha = serverTimestamp();
   const fechaI = new Date();
   const fechaIString = `${fechaI.getDate()}/${fechaI.getMonth() + 1}/${fechaI.getFullYear()}`;
-  let meGusta = [];
- // console.log(user);
+  const meGusta = [];
+  // console.log(user);
   btnPublicar.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log('click en prueba');
     guardarReceta(
       fecha,
       user.photoURL,
@@ -89,15 +87,6 @@ export const crearPost = () => {
     formPublicacion.style.visibility = 'hidden';
     formPublicacion.style.opacity = '0';
   });
-  // const fecha = serverTimestamp();
-  // const fechaI = new Date();
-  // const fechaIString = `${fechaI.getDate()}/${fechaI.getMonth() + 1}/${fechaI.getFullYear()}`;
-  // btnPublicar.addEventListener('click', async (e) => {
-  // e.preventDefault();
-  // guardarReceta(fecha, user.photoURL, user.displayName, fechaIString, inputReceta.value, inputIngredientes.value, inputProcedimiento.value, selectCategoria.value, user.uid);
-  // formPublicacion.style.visibility = 'hidden';
-  // formPublicacion.style.opacity = '0';
-  // });
   const cerrarModal = document.createElement('button');
   cerrarModal.setAttribute('id', 'cerrarModal');
   const Xmodal = document.createElement('IMG');

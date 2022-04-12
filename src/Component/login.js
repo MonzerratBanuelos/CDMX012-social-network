@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../router.js';
+// eslint-disable-next-line import/no-cycle
 import { iniciarSesion, usuarioExistente, google } from '../lib/index.js';
-import { modal } from '../Component/modal.js';
+import { modal } from './modal.js';
 
 export const login = () => {
   const seccionGeneral = document.createElement('section');
@@ -72,7 +73,6 @@ export const login = () => {
   botonContraseña.textContent = '¿Olvidaste tu contraseña?';
   botonContraseña.setAttribute('id', 'letras1');
   botonContraseña.addEventListener('click', () => {
-    console.log('hola');
   });
 
   const parrafo = document.createElement('p');
@@ -117,7 +117,7 @@ export const login = () => {
   // btnMostrarModal.appendChild(mostrarModal);
   // contenedorPadre.append(contenedorModal, iconomal, mensajemal, btnVolver);
   // eslint-disable-next-line max-len
-  seccionLogin.append(logoYummi, inputEmailLogin, inputContraseñaLogin, botonLogin, botonGoogle, botonContraseña, parrafo, botonRegistrate, /*contenedorPadre,*/ btnmostrarcontraseña, modal());
+  seccionLogin.append(logoYummi, inputEmailLogin, inputContraseñaLogin, botonLogin, botonGoogle, botonContraseña, parrafo, botonRegistrate, btnmostrarcontraseña, modal());
 
   return seccionGeneral;
 };

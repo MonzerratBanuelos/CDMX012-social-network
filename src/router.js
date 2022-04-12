@@ -3,10 +3,12 @@
 /* import { myFunction } from './lib/index.js';
 
 myFunction(); */
+// eslint-disable-next-line import/no-unresolved
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 
 // eslint-disable-next-line import/no-cycle
 import { login } from './Component/login.js';
+// eslint-disable-next-line import/no-cycle
 import { muro } from './Component/muro.js';
 // eslint-disable-next-line import/no-cycle
 import { registro } from './Component/registro.js';

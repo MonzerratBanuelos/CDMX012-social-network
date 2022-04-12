@@ -541,6 +541,9 @@
     align-items: center;
     flex-wrap: wrap;
    }
+   h6{
+       color: rgba(0, 0, 0, 0.514);
+   }
    #menuOpciones{
     justify-self: flex-end;
     align-items: center;
@@ -608,10 +611,27 @@
         word-wrap: break-word;
         font-family:  'Roboto', sans-serif;
         font-size: small;
+        padding-bottom: 2%;
  }
  #menuInferior{
     visibility: hidden;
 
+ }
+ .btnMeGusta{
+     background: none;
+     border: none;
+     position: relative;
+     left: 2%;
+     bottom: 1%;
+     cursor: pointer;
+ }
+ .iconoMeGusta{
+     width: 50%;
+ }
+ h5{
+     position: absolute;
+     left: 12%;
+     bottom: 15px;
  }
 }
 
