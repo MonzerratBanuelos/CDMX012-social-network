@@ -1,5 +1,4 @@
 // eslint-disable-next-line import/no-cycle
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js';
 import { guardarReceta } from '../../lib/firestore.js';
 import { getAuth } from '../../lib/Imports-firebase-store.js';
@@ -66,28 +65,39 @@ export const crearPost = () => {
   const auth = getAuth();
   const user = auth.currentUser;
 
-  console.log(user);
+
+  const fecha = serverTimestamp();
+  const fechaI = new Date();
+  const fechaIString = `${fechaI.getDate()}/${fechaI.getMonth() + 1}/${fechaI.getFullYear()}`;
+  let meGusta = [];
+ // console.log(user);
   btnPublicar.addEventListener('click', (e) => {
     e.preventDefault();
     console.log('click en prueba');
     guardarReceta(
+      fecha,
       user.photoURL,
       user.displayName || user.email,
+      fechaIString,
       inputReceta.value,
       inputIngredientes.value,
       inputProcedimiento.value,
       selectCategoria.value,
       user.uid,
-
-  const fecha = serverTimestamp();
-  const fechaI = new Date();
-  const fechaIString = `${fechaI.getDate()}/${fechaI.getMonth() + 1}/${fechaI.getFullYear()}`;
-  btnPublicar.addEventListener('click', async (e) => {
-    e.preventDefault();
-    guardarReceta(fecha, user.photoURL, user.displayName, fechaIString, inputReceta.value, inputIngredientes.value, inputProcedimiento.value, selectCategoria.value, user.uid);
+      meGusta,
+    );
     formPublicacion.style.visibility = 'hidden';
     formPublicacion.style.opacity = '0';
   });
+  // const fecha = serverTimestamp();
+  // const fechaI = new Date();
+  // const fechaIString = `${fechaI.getDate()}/${fechaI.getMonth() + 1}/${fechaI.getFullYear()}`;
+  // btnPublicar.addEventListener('click', async (e) => {
+  // e.preventDefault();
+  // guardarReceta(fecha, user.photoURL, user.displayName, fechaIString, inputReceta.value, inputIngredientes.value, inputProcedimiento.value, selectCategoria.value, user.uid);
+  // formPublicacion.style.visibility = 'hidden';
+  // formPublicacion.style.opacity = '0';
+  // });
   const cerrarModal = document.createElement('button');
   cerrarModal.setAttribute('id', 'cerrarModal');
   const Xmodal = document.createElement('IMG');

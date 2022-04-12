@@ -8,4 +8,3 @@ export const uploadImage = async (file) => {
 
 export const obtenerUrl = async (fileRef) => {
   await getDownloadURL(fileRef); */
-};

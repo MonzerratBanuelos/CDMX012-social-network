@@ -10,7 +10,7 @@ import { crearPost } from './post/CreatePost.js';
 
 export const muro = () => {
   const datosUsuario = datos();
-  console.log(datosUsuario);
+ // console.log(datosUsuario);
 
   const seccionMuro = document.createElement('section');
   seccionMuro.setAttribute('id', 'seccionMuro');
@@ -59,7 +59,6 @@ export const muro = () => {
   cerrarSesionImg.setAttribute('id', 'cerrarSesionImg'); 
   const btnCerrarSesion = document.createElement('button');// cerrar sesión cuenta
   btnCerrarSesion.setAttribute('type', 'button');
-  btnCerrarSesion.setAttribute('class', 'botones');
   btnCerrarSesion.setAttribute('id', 'btnCerrarSesion');
   btnCerrarSesion.textContent = 'Cerrar Sesión';
   btnCerrarSesion.appendChild(cerrarSesionImg);

@@ -20,11 +20,6 @@ export const registro = () => {
   logoYummi.setAttribute('id', 'logoinicio');
   logoYummi.setAttribute('alt', 'Yummy, bienvenido a tu mundo de cocina');
 
-  const inputNombreRegistro = document.createElement('input');
-  inputNombreRegistro.setAttribute('type', 'text');
-  inputNombreRegistro.setAttribute('id', 'userName');
-  inputNombreRegistro.setAttribute('placeholder', 'Nombre');
-
   const inputEmailRegistro = document.createElement('input');
   inputEmailRegistro.setAttribute('type', 'email');
   inputEmailRegistro.setAttribute('id', 'emailRegi');
@@ -74,7 +69,7 @@ export const registro = () => {
   });
   seccionGeneral.append(tabla, seccionRegistro);
   // eslint-disable-next-line max-len
-  seccionRegistro.append(logoYummi, inputNombreRegistro, inputEmailRegistro, inputContraseñaRegistro, inputContraseñaConfirmar, btnmostrarcontraseña, btnmostrarcontraseña2, botonRegistro, modal());
+  seccionRegistro.append(logoYummi, inputEmailRegistro, inputContraseñaRegistro, inputContraseñaConfirmar, btnmostrarcontraseña, btnmostrarcontraseña2, botonRegistro, modal());
 
   return seccionGeneral;
 };

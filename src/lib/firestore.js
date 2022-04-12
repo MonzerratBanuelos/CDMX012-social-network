@@ -1,8 +1,7 @@
-
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
 
-import { initializeApp} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
-import { getAuth} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 
 import {
   getFirestore,
@@ -14,18 +13,17 @@ import {
   onSnapshot,
   doc,
   updateDoc,
-
+  orderBy,
+  query,
+  arrayUnion,
 } from './Imports-firebase-store.js';
 import { app } from './llavesFirebase.js';
 
-} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js';
-import { app } from './index.js';
-//import {getStorage} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-storage.js';
-
+// import {getStorage} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-storage.js';
 
 const db = getFirestore();
 
-export const guardarReceta = (fecha, foto, nombre, fechaIString, receta, ingredientes, procedimiento, categoria, uidUsuario) => {
+export const guardarReceta = (fecha, foto, nombre, fechaIString, receta, ingredientes, procedimiento, categoria, uidUsuario, meGusta) => {
   if (receta === '' || ingredientes === '' || procedimiento === '') {
     // console.log('a ok');
   } else {
@@ -33,10 +31,7 @@ export const guardarReceta = (fecha, foto, nombre, fechaIString, receta, ingredi
     const user = auth.currentUser; */
 
     addDoc(collection(db, 'recetas'), {
-
-      addDoc(collection(db, 'recetas'), {
       fecha,
-
       foto,
       nombre,
       receta,
@@ -45,13 +40,15 @@ export const guardarReceta = (fecha, foto, nombre, fechaIString, receta, ingredi
       procedimiento,
       categoria,
       uidUsuario,
+      meGusta,
     });
   }
 };
-
+const q = query(collection(db, 'recetas'), orderBy('fecha', 'desc'));
 export const conseguirRecetas = () => getDocs(collection(db, 'recetas'));
-export const alConseguirRecetas = (callback) => onSnapshot(collection(db, 'recetas'), callback);
+export const alConseguirRecetas = (callback) => onSnapshot(q, (collection(db, 'recetas'), callback));
 export const borrarReceta = (id) => deleteDoc(doc(db, 'recetas', id));
 export const conseguirReceta = (id) => getDoc(doc(db, 'recetas', id));
 export const actualizarReceta = (id, nuevosCampos) => updateDoc(doc(db, 'recetas', id), nuevosCampos);
-//export const storage = getStorage(app);
+// export const storage = getStorage(app);
+export const sumarMeGusta = (id, uidUsuario)=> updateDoc(doc(db, 'recetas', id), { meGusta: arrayUnion(uidUsuario) });
