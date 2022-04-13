@@ -1,22 +1,14 @@
-// aqui exportaras las funciones que necesites
-/*
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
-}; */
-// Import the functions you need from the SDKs you need
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  updateProfile,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   sendEmailVerification,
   GoogleAuthProvider,
   signInWithPopup,
 } from './Imports-firebase-store.js';
+// eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../router.js';
-// import { modal } from '../Component/modal.js';
 
 // Initialize Firebase
 
@@ -29,15 +21,14 @@ export function iniciarSesion() {
     // https://firebase.google.com/docs/reference/js/firebase.User
       const email = user.email;
       const emailVerificado = user.emailVerified;
-      const nombreUsuario = user.displayName;
-      const uid = user.uid;
-      const fotoUsuario = user.photoURL;
+      // const nombreUsuario = user.displayName;
+      // const uid = user.uid;
+      // const fotoUsuario = user.photoURL;
       if (emailVerificado === false) {
         document.getElementById('contmodal').style.opacity = '1';
         document.getElementById('contmodal').style.visibility = 'visible';
         document.getElementById('mensajemal').textContent = 'Email no verificado';
       } else {
-        console.log(user);
         onNavigate('/muro');
         // eslint-disable-next-line prefer-template
         document.getElementById('mensajeLogin').textContent = ' Estas Logueado ' + email;
@@ -73,62 +64,29 @@ export function verificarCorreo() {
       // ...
     });
 }
-/* export function correoContraseña() {
-  const auth = getAuth();
-sendPasswordResetEmail(auth, email)
-    .then(() => {
-    // Password reset email sent!
-    // ..
-    })
-    .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-    });
-} */
-/* export function nombreUsuario(userCredential, nombreRegistro) {
-  const auth = getAuth();
-  updateProfile(auth.currentUser)({
-    displayName:nombreRegistro,
-  });
-  console.log(nombreRegistro);
-} */
+
 export function registrar() {
-  // const nombreRegistro = document.getElementById('nombreRegistro').value;
-  const userName = document.getElementById('userName').value;
   const email = document.getElementById('emailRegi').value;
   const contraseña = document.getElementById('contraseñaRegi').value;
   const contraseñaConfirmar = document.getElementById('contraseñaRegidos').value;
   const auth = getAuth();
   if (contraseña === contraseñaConfirmar) {
-    createUserWithEmailAndPassword(auth, email, contraseña, userName)
+    createUserWithEmailAndPassword(auth, email, contraseña)
       // eslint-disable-next-line no-unused-vars
       .then((userCredential) => {
         verificarCorreo();
-        // alert('Registrado exitosamente,Porfavor verifica tu correo');
         document.getElementById('contmodal').style.opacity = '1';
         document.getElementById('contmodal').style.visibility = 'visible';
         document.getElementById('iconomal').src = '../images/palomita.png';
         document.getElementById('mensajemal').textContent = 'Registrado exitosamente, verifica tu correo';
       })
       .catch((error) => {
-        // const errorCode = error.code;
         const errorMessage = error.message;
         document.getElementById('contmodal').style.opacity = '1';
         document.getElementById('contmodal').style.visibility = 'visible';
         document.getElementById('mensajemal').textContent = errorMessage;
-        // alert(errorMessage + errorCode);
-        // ..
       });
-    /* .then(() => {
-        verificarCorreo();
-        alert('Registrado exitosamente,Porfavor verifica tu correo');
-        document.getElementById('contmodal').style.opacity = '1';
-        document.getElementById('contmodal').style.visibility = 'visible';
-        document.getElementById('mensajemal').textContent = 'Registrado exitosamente';
-      }); onNavigate('/'); */
   } else {
-    // alert('Las contraseñas no coinciden');
     document.getElementById('contmodal').style.opacity = '1';
     document.getElementById('contmodal').style.visibility = 'visible';
     document.getElementById('mensajemal').textContent = 'Las contraseñas no coinciden';
@@ -139,15 +97,16 @@ export function cerrar() {
   getAuth().signOut()
     .then(
       () => {
-        // alert('Cerraste sesión');
         document.getElementById('contmodal').style.opacity = '1';
         document.getElementById('contmodal').style.visibility = 'visible';
         document.getElementById('mensajemal').textContent = 'Cerraste sesión';
       },
     )
     // eslint-disable-next-line no-unused-vars
-    .catch(() => {
-      alert('No fue posible completar tu petición intentalo más tarde');
+    .catch((error) => {
+      document.getElementById('contmodal').style.opacity = '1';
+      document.getElementById('contmodal').style.visibility = 'visible';
+      document.getElementById('mensajemal').textContent = error.message;
     });
 }
 export function google() {
@@ -160,7 +119,6 @@ export function google() {
       // The signed-in user info.
       // eslint-disable-next-line no-unused-vars
       const user = result.user;
-      console.log(user);
       onNavigate('/muro');
       // ...
     // eslint-disable-next-line no-unused-vars
@@ -184,16 +142,6 @@ export function datos() {
       emailUsuario: user.email,
       uidUsuario: user.uid,
     };
-    // localStorage.setItem('uid', user.uid);
-    // localStorage.setItem('nombre', user.displayName);
   }
-
-  // The user object has basic properties such as display name, email, etc.
-
-  /*  email: user.email,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-      uid: user.uid, */
-
   return datosUsuario;
 }

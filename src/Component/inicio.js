@@ -4,7 +4,7 @@ import { onNavigate } from '../router.js';
 import { iniciarSesion, usuarioExistente, google } from '../lib/index.js';
 import { modal } from './modal.js';
 
-export const login = () => {
+export const inicio = () => {
   const seccionGeneral = document.createElement('section');
   const tabla = document.createElement('IMG');
   tabla.src = './images/login.png';
@@ -89,33 +89,6 @@ export const login = () => {
   });
   seccionGeneral.append(tabla, seccionLogin);
 
-  // const contenedorPadre = document.createElement('div');
-  // contenedorPadre.setAttribute('class', 'contmodal');
-  // contenedorPadre.setAttribute('id', 'contmodal');
-  // const contenedorModal = document.createElement('div');
-  // contenedorModal.setAttribute('class', 'modal1');
-  // contenedorModal.setAttribute('id', 'modal');
-  // const iconomal = document.createElement('IMG');
-  // iconomal.src = './images/tachecito.png';
-  // iconomal.setAttribute('id', 'iconomal');
-  // iconomal.setAttribute('alt', 'incorrecto');
-  // const mensajemal = document.createElement('h1');
-  // mensajemal.setAttribute('class', 'mensajemal');
-  // mensajemal.textContent = 'Verifica tu información';
-  // const btnVolver = document.createElement('button');
-  // btnVolver.setAttribute('id', 'botonVolver');
-  // btnVolver.setAttribute('class', 'botones');
-  // const cerrarModal = document.createElement('a');
-  // cerrarModal.textContent = 'Volver';
-  // cerrarModal.setAttribute('href', '#');
-  // contenedorModal.append(iconomal, mensajemal, btnVolver);
-  // const btnMostrarModal = document.createElement('button');
-  // const mostrarModal = document.createElement('a');
-  // mostrarModal.textContent = 'Ver';
-  // mostrarModal.setAttribute('href', '#contmodal');
-  // btnVolver.appendChild(cerrarModal);
-  // btnMostrarModal.appendChild(mostrarModal);
-  // contenedorPadre.append(contenedorModal, iconomal, mensajemal, btnVolver);
   // eslint-disable-next-line max-len
   seccionLogin.append(logoYummi, inputEmailLogin, inputContraseñaLogin, botonLogin, botonGoogle, botonContraseña, parrafo, botonRegistrate, btnmostrarcontraseña, modal());
 

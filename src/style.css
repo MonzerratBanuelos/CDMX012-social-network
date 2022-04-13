@@ -177,7 +177,7 @@
         border-radius: 10px;
         left: 50%;
         top:50%;
-        border: 2px solid #FF0606;
+        border: 2px solid #EBC920;
         transform: translate(-50%, -50%);
     }
     .contmodal{
@@ -285,17 +285,28 @@
         display: flex;
         visibility: visible;
         opacity: 1;
+        overflow-wrap: anywhere;
     }
     #perfilCaja{
-        position: relative;
+       /* position: relative;
         left: 10%;
         background-color: #EBC920;
         width: 80%;
         height: 88%;
         border-radius: 10px;
         margin-top: 10%;
-        margin-bottom: 10%;
-     
+        margin-bottom: 10%; */
+        position: relative;
+    left: 10%;
+    background-color: #EBC920;
+    width: 80%;
+    height: 88%;
+    border-radius: 10px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     }
     #fotoPortada{
         width: 100%;
@@ -310,14 +321,14 @@
         border: #EBC920 3px solid;
     }
     #nombreUser{
-        width:70%;
-        display:flex;
-        flex-wrap: wrap;
-        position: relative;
-        top: 14%;
-        left: 22%;
-        font-size: 20px;
-        font-weight: bold;
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: 30%;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
     }
     #btnCerrarSesion{
         background: none;
@@ -337,7 +348,7 @@
         width: 10%;
         margin: 2%;
         position: absolute;
-        right: 85%;
+        right: 70%;
         bottom: 31%;
     }
 
@@ -484,7 +495,6 @@
         border-radius: 3px;
         box-shadow: 1px 1px 1px 1px rgba(56, 55, 55, 0.527);
         color: white;
-        font-weight: bold;
         text-align: center;
         cursor: pointer;
         position: absolute;
@@ -503,7 +513,6 @@
         border-radius: 3px;
         box-shadow: 1px 1px 1px 1px rgba(56, 55, 55, 0.527);
         color: white;
-        font-weight: bold;
         text-align: center;
         cursor: pointer;
         position: absolute;
@@ -543,6 +552,9 @@
    }
    h6{
        color: rgba(0, 0, 0, 0.514);
+       position: absolute;
+       left: 10.5%;
+       top:42px;
    }
    #menuOpciones{
     justify-self: flex-end;
@@ -557,7 +569,8 @@
     flex-wrap: wrap;
     position: absolute;
     left: 90%;
-    top:20px
+    top:20px;
+    width:10%;
 }
 
 .borrarPost{
@@ -567,6 +580,7 @@
     background: #EBC920;
     visibility: hidden;
     opacity: 0;
+    height: 2rem;
     }
     .editarPost{
         position: relative;
@@ -575,6 +589,7 @@
         background: #EBC920;
         visibility: hidden;
         opacity: 0;
+        height:2rem;
     }
    
    .fotoPost{
@@ -655,7 +670,7 @@
         input{
             width: 66%;
             height: 3%;
-            border: 1.5px solid #b89a03;
+            border: 1.5px solid #EBC920;
             border-radius: 5px;
             padding: 2%;
         }
@@ -793,7 +808,7 @@
            border-radius: 10px;
            left: 50%;
            top:50%;
-           border: 2px solid #FF0606;
+           border: 2px solid #EBC920;
            transform: translate(-50%, -50%);
         }
         .contmodal{
@@ -928,13 +943,13 @@
             align-items: center;
             visibility: hidden;
             transition: smooth;
+            
         }
         #perfilCaja{
             position:fixed;
             width: 75%;
             height: 82%;
             background-color:#F8ECB1;
-            border: 1px solid #EBC920;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -953,17 +968,25 @@
             font-size: 20px;
             font-weight: bold;
             text-align: center;
+            display: contents;
+            overflow-wrap: anywhere;
         }
         #cajaPortada{
             position: relative;
-            top:2px;
             width: 100%;
             height: 20%;
-            background-color:transparent;
-            display: flex;
-            justify-content: center;
         }
-
+        #nombreUser{
+            width:70%;
+            display:flex;
+            flex-wrap: wrap;
+            text-align: center;
+            position: relative;
+            top: -20%;
+            left: 5%;
+            font-size: 20px;
+            font-weight: bold;
+        }
         
         #fotoPortada{
             justify-self: center;
@@ -975,7 +998,6 @@
         #btnCerrarSesion{
             background:none;
             border: none;
-            top: 40%;
             color: black;
             cursor: pointer;
             width: 60%;
@@ -983,20 +1005,24 @@
             z-index: 1;
             text-align:auto;
             font-weight: bold;
+            font-size: medium;
+            position: absolute;
+            left: 25%;
+            top: 80%;
         }
         #cerrarSesionImg{
             width: 10%;
             margin: 2%;
             position: absolute;
-            right: 85%;
-            bottom: 31%;
+            right: 81%;
+            bottom: 14%;
         }
         form{
             position: fixed;
-            top:20%;
-            left:2.5%;
+            top:15%;
+            left:1.8%;
             width: 90%;
-            height:60%;
+            height:57%;
             background-color: white;
             border: #EBC920 1px solid;
             border-radius: 10px;
@@ -1006,7 +1032,7 @@
     
         }
         label{
-            font-size: 12px;
+            font-size: 13px;
         }
         #cerrarModal{
             width: 5%;
@@ -1015,67 +1041,73 @@
             background: none;
             border:none;
             position: absolute;
-            top: 1%;
+            top: 2%;
             left: 92%;
             cursor: pointer;
            
         }
         #labelReceta{
             position: absolute;
-            top:7%;
-            left: 11%;
+            top:9%;
+            left: 7%;
     
         }
         #inputReceta{
-            width: 45%;
-            height: 1%;
+            width: 52%;
+            height: 2%;
             position:absolute;
-            top:10%;
-            left: 10%;
+            top:14%;
+            left: 7%;
+    
         }
         #labelIngredientes{
             position: absolute;
-            top:18%;
-            left: 11%;
+            top:23%;
+            left: 7%;
         }
         #inputIngredientes{
-           width: 79%;
-           height: 5%;
+           width: 81%;
+           height: 10%;
            position: absolute;
-           top:21%;
-           left: 10%;
+           top:28%;
+           left: 7%;
            border: 1.5px solid #EBC920;
            border-radius: 5px;
            padding: 2%;
-          
+           font-family:  'Roboto', sans-serif;
+            font-size: small;
+            padding-bottom: 2%;
         
         }
         #labelProcedimiento{
             position: absolute;
-            top:34%;
-            left: 11%;
+            top:46%;
+            left: 7%;
         }
         #inputProcedimiento{
-            width: 79%;
-            height: 15%;
+            width: 81%;
+            height: 30%;
             position: absolute;
-            top:37%;
-            left: 10%;
+            top:51%;
+            left: 7%;
             border: 1.5px solid #EBC920;
            border-radius: 5px;
            padding: 2%;
+           font-family:  'Roboto', sans-serif;
+           font-size: small;
+           padding-bottom: 2%;
         }
         #labelCategoria{
             position:absolute;
-            top:7%;
-            left: 66%;
+            top:9%;
+            left: 71%;
         }
         #selectCategoria{
-            width: 15%;
+            width: 22%;
             height: 6%;
             position:absolute;
-            top:10%;
-            left: 65%;
+            top:14%;
+            left: 70%;
             border: 1.5px solid #EBC920;
             border-radius: 5px;
         
@@ -1085,20 +1117,35 @@
             border: 3px solid #EBC920;
           }
          #btnPostear{
-            width: fit-content;
-            height: 4%;
+            width: 20%;
+            height: 6%;
             background-color:black;
             border-radius: 3px;
             box-shadow: 1px 1px 1px 1px rgba(56, 55, 55, 0.527);
             color: white;
-            font-weight: bold;
             text-align: center;
             cursor: pointer;
             position: absolute;
-            top:60%;
-            left: 80%;
+            top:90%;
+            left:40%;
             border:none;
+            opacity: 1;
          }
+         #btnActualizar{
+            width: 25%;
+            height: 6%;
+            background-color:black;
+            border-radius: 3px;
+            box-shadow: 1px 1px 1px 1px rgba(56, 55, 55, 0.527);
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            position: absolute;
+            top:90%;
+            left: 65%;
+            border:none;
+            opacity:1;
+        }
             #postPublicado{
             width: 100%;
             display: flex;
@@ -1106,17 +1153,18 @@
             background:white;
             position: absolute;
             top: 22.5%;
+            padding-bottom: 15%;
         }
         .post{
         background-color: white;
-        width: 92%;
-        padding: 1%;
+        width: 87%;
+        padding: 4%;
         border: #EBC920 1.5px solid;
         border-radius: 5px;
         margin: 1.5%;
         position: relative;
         top:50%;
-        left:.9%;
+        left:.2%;
         box-shadow: 2px 2px 2px 2px rgba(56, 55, 55, 0.212);
        
     }    
@@ -1131,6 +1179,9 @@
         width:13%;
         height: 13%;
         margin: 0 2% 0 0;
+    }
+    h4{
+        margin: 0%;
     }
     h3{
         margin:0%;
@@ -1150,11 +1201,14 @@
         flex-wrap: wrap;
         position: absolute;
         left: 85%;
+        width: 15%;
+        z-index: 1;
     }
     
     .borrarPost{
         position: relative;
         width: 100%;
+        height: 2rem;
         border: 1px solid #EBC920;
         background: #EBC920;
         visibility: hidden;
@@ -1163,6 +1217,7 @@
         .editarPost{
             position: relative;
             width: 100%;
+            height: 2rem;
             border: 1px solid #EBC920;
             background: #EBC920;
             visibility: hidden;
@@ -1175,7 +1230,9 @@
             white-space: -pre-wrap;
             white-space: -o-pre-wrap;
             word-wrap: break-word;
-            
+            font-family:  'Roboto', sans-serif;
+            font-size: small;
+            padding-bottom: 2%;
      }
      #menuInferior{
          height : 8%;
@@ -1185,13 +1242,74 @@
          z-index : 9999;
          bottom: 0%;
          display:flex;
-         justify-content: space-between;
+         justify-content: space-around;
          align-items: center;
      }
-     .iconosFooter {
-         width:20%;
-         height:fit-content;
-         background: #EBC920;
+     .casa {
+         width:12%;
+         background: none;
          border:none;
      }
+     .casa img{
+        width:97%; 
+     }
+     .filtro {
+        width:12%;
+        background: none;
+        border:none;
+    }
+    .filtro img{
+       width:100%; 
+    }
+    .guardar {
+        width:12%;
+        background: none;
+        border:none;
+    }
+    .guardar img{
+       width:80%; 
+    }
+    .usuario {
+        width:12%;
+        background: none;
+        border:none;
+    }
+    .usuario img{
+       width:100%; 
+    }
+     h6{
+        color: rgba(0, 0, 0, 0.514);
+        position: absolute;
+        left: 19%;
+        top:30px;
+    }
+    .categoriaImg{
+        width: 5%;
+        position: relative;
+        bottom: 1rem;
+        left: 80%;
+ }
+ 
+    p{
+     position: relative;
+     text-align: end;
+     font-size: small;
+     margin: 1rem 0 0 0;
+ }
+ .btnMeGusta{
+    background: none;
+    border: none;
+    position: relative;
+    left: 1%;
+    bottom: .1rem;
+    cursor: pointer;
+}
+.iconoMeGusta{
+    width: 35%;
+}
+h5{
+    position: absolute;
+    left: 19%;
+    bottom: -2px;
+}
     }

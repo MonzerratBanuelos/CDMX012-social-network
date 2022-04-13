@@ -1,5 +1,4 @@
 // eslint-disable-next-line import/no-cycle
-// import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import { registrar } from '../lib/index.js';
 import { modal } from './modal.js';

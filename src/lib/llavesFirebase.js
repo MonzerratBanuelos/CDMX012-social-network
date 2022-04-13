@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
 // Your web app's Firebase configuration
 export const firebaseConfig = {

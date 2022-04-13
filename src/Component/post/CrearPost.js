@@ -4,8 +4,6 @@ import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.8/fireba
 import { guardarReceta } from '../../lib/firestore.js';
 import { getAuth } from '../../lib/Imports-firebase-store.js';
 
-// import { obtenerUrl, uploadImage } from './storage.js';
-
 export const crearPost = () => {
   const formPublicacion = document.createElement('form');
   formPublicacion.setAttribute('id', 'formPublicacion');
@@ -31,7 +29,7 @@ export const crearPost = () => {
   inputProcedimiento.setAttribute('type', 'text');
   const labelCategoria = document.createElement('label');
   labelCategoria.setAttribute('id', 'labelCategoria');
-  labelCategoria.textContent = 'Elige una categoria';
+  labelCategoria.textContent = 'Categoría:';
   const selectCategoria = document.createElement('select');
   selectCategoria.setAttribute('id', 'selectCategoria');
   const catSalado = document.createElement('option');
@@ -60,8 +58,7 @@ export const crearPost = () => {
   btnPublicar.textContent = 'Publicar';
   btnPublicar.setAttribute('id', 'btnPostear');
   const autentificacion = getAuth();
-  const user = autentificacion.currentUser;
-
+  const usuario = autentificacion.currentUser;
   const fecha = serverTimestamp();
   const fechaI = new Date();
   const fechaIString = `${fechaI.getDate()}/${fechaI.getMonth() + 1}/${fechaI.getFullYear()}`;
@@ -70,14 +67,14 @@ export const crearPost = () => {
     e.preventDefault();
     guardarReceta(
       fecha,
-      user.photoURL,
-      user.displayName || user.email,
+      usuario.photoURL,
+      usuario.displayName || usuario.email,
       fechaIString,
       inputReceta.value,
       inputIngredientes.value,
       inputProcedimiento.value,
       selectCategoria.value,
-      user.uid,
+      usuario.uid,
       meGusta,
     );
     formPublicacion.style.visibility = 'hidden';

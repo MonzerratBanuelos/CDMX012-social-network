@@ -1,7 +1,4 @@
 import {
-  getFirestore,
-} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js';
-import {
   alConseguirRecetas,
   borrarReceta,
   conseguirReceta,
@@ -10,25 +7,20 @@ import {
   restarMeGusta,
   // guardarReceta,
 } from '../../lib/firestore.js';
+// eslint-disable-next-line import/no-cycle
 import { datos } from '../../lib/index.js';
 
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../../router.js';
-// localStorage.getItem('nombre', datos.displayName);
-// console.log(datosUsuario);
 // eslint-disable-next-line import/no-cycle
 
 export const GetPost = () => {
   // DATOS DEL USUARIO EXISTENTE LOGUEADO
   const datosUsuario = datos();
-  console.log(datosUsuario);
   // ESTE ES EL UID DEL USUARIO EXISTENTE LOGUEADO
   const uidUsuario = datosUsuario.uidUsuario;
-  console.log(uidUsuario);
-
   const divPost = document.createElement('div');
-  const db = getFirestore();
-  // const q = query(collection(db, 'recetas'), orderBy('fecha', 'desc'));
+  // const db = getFirestore();
   divPost.setAttribute('id', 'postPublicado'); // SE ENCARGA DE IMPRIMIR LAS RECETAS QUE ENCUENTRE EN LA BASE DE DATOS
 
   alConseguirRecetas((querySnapshot) => {
@@ -38,9 +30,6 @@ export const GetPost = () => {
     querySnapshot.forEach((doc) => {
       const publicacion = doc.data();
       const idPublicacion = publicacion.uidUsuario;
-      console.log(idPublicacion);
-      // console.log(publicacion);
-      console.log({ publicacion });
       const post = document.createElement('div');
       post.setAttribute('class', 'post');
       post.setAttribute('id', 'post');
@@ -54,8 +43,6 @@ export const GetPost = () => {
       const h3NombreUsuario = document.createElement('h3');
 
       h3NombreUsuario.textContent = publicacion.nombre || datosUsuario.emailUsuario;
-      // console.log(publicacion.emailUsuario);
-      // console.log(publicacion.nombre);
 
       const h5Fecha = document.createElement('h6');
       h5Fecha.textContent = publicacion.fechaIString;
@@ -81,6 +68,7 @@ export const GetPost = () => {
         contmodal.style.visibility = 'visible';
         contmodal.style.opacity = '1'; */
           // console.log(doc.id);
+          // eslint-disable-next-line no-undef
           Swal.fire({
             title: '¿Estas segur@?',
             text: 'Esta acción no se puede deshacer',
@@ -95,6 +83,7 @@ export const GetPost = () => {
             .then((result) => {
               if (result.isConfirmed) {
                 borrarReceta(doc.id);
+                // eslint-disable-next-line no-undef
                 Swal.fire(
                   '¡Borrado!',
                   'Tu receta ha sido borrada con éxito.',
@@ -115,31 +104,25 @@ export const GetPost = () => {
         menuOpciones.setAttribute('value', valorVisual);
         menuOpciones.addEventListener('click', () => {
           valorVisual = false;
-          console.log(valorVisual);
           if (valorVisual === false) {
-            console.log('Estoy en false');
             borrarPostBoton.style.visibility = 'visible';
             borrarPostBoton.style.opacity = '1';
             editarPostBoton.style.visibility = 'visible';
             editarPostBoton.style.opacity = '1';
             valorVisual = true;
-            console.log(valorVisual);
           } else {
-            console.log('estoy en true');
             borrarPostBoton.style.visibility = 'hidden';
             borrarPostBoton.style.opacity = '0';
             editarPostBoton.style.visibility = 'hidden';
             editarPostBoton.style.opacity = '0';
           }
           valorVisual = true;
-          console.log(valorVisual);
         }); valorVisual = true;
+
+        const formPublicacion = document.getElementById('formPublicacion');
+        let editandoReceta = false;
+        let id = '';
         editarPostBoton.addEventListener('click', async ({ target: { dataset } }) => {
-          const editarPost1 = divPost.querySelectorAll('.editarPost');
-          console.log(editarPost1);
-          // editarPost1.forEach((btn) => {
-          /// console.log(btn);
-          // btn.addEventListener('click', async ({ target: { dataset } }) => {
           const datosReceta = await conseguirReceta(dataset.id);
           const recetaEditar = datosReceta.data();
           formPublicacion.inputReceta.value = recetaEditar.receta;
@@ -147,6 +130,7 @@ export const GetPost = () => {
           formPublicacion.inputProcedimiento.value = recetaEditar.procedimiento;
           editandoReceta = true;
           id = datosReceta.id;
+          const btnPostear = document.getElementById('btnPostear');
           const btnActualizar = document.getElementById('btnActualizar');
           btnActualizar.addEventListener('click', (e) => {
             e.preventDefault();
@@ -154,11 +138,9 @@ export const GetPost = () => {
             const ingredientes = formPublicacion.inputIngredientes;
             const procedimiento = formPublicacion.inputProcedimiento;
             const categoria = formPublicacion.selectCategoria;
-            console.log('holiwi');
             // eslint-disable-next-line max-len
             // guardarReceta(inputReceta.value, inputIngredientes.value, inputProcedimiento.value, selectCategoria.value);
             if (editandoReceta === true) {
-              console.log('Estoy actualizando');
               actualizarReceta(id, {
                 receta: receta.value,
                 ingredientes: ingredientes.value,
@@ -217,29 +199,23 @@ export const GetPost = () => {
       btnMeGusta.addEventListener('click', () => {
         if (arrayTotalMeGusta.includes(uidUsuario)) {
           restarMeGusta(doc.id, uidUsuario);
-          console.log('Estoy quitando');
         } else {
           sumarMeGusta(doc.id, uidUsuario);
-          console.log('Estoy dando');
         }
       });
 
       btnMeGusta.append(iconoMeGusta);
       const numeroMeGusta = document.createElement('h5');
       const problema = publicacion.meGusta.length;
-      numeroMeGusta.textContent = problema + ' Me gusta';
-
-      const formPublicacion = document.getElementById('formPublicacion');
-      let editandoReceta = false;
-      let id = '';
+      numeroMeGusta.textContent = `${problema} Me gusta`;
 
       post.append(
         contenedorInfoUsuario,
+        publicacionCategoriaP,
+        plato,
         h4PublicacionReceta,
         ingredientesP,
         publicacionProcedimientosP,
-        publicacionCategoriaP,
-        plato,
         btnMeGusta,
         numeroMeGusta,
       );
@@ -247,10 +223,7 @@ export const GetPost = () => {
       // postPublicado.appendChild(post);
       contenedorInfoUsuario.append(fotoPost, h3NombreUsuario, h5Fecha);
       divPost.append(post);
-    // console.log(divPost);
     });
-  // });
-  // });
   });
   return divPost;
 };

@@ -3,12 +3,9 @@ import { onNavigate } from '../router.js';
 // eslint-disable-next-line import/no-unresolved
 import { datos, cerrar } from '../../lib/index.js';
 // eslint-disable-next-line import/no-cycle
-import { GetPost } from './post/GetPost.js';
+import { GetPost } from './post/ImprimirPost.js';
 
-// import { mostrarBoton } from './post/EditarPost.js';
-// import{ publicar } from '../main.js';
-import { crearPost } from './post/CreatePost.js';
-// import { deletePost } from './post/DeletePost.js';
+import { crearPost } from './post/CrearPost.js';
 
 export const muro = () => {
   const datosUsuario = datos();
@@ -84,25 +81,25 @@ export const muro = () => {
   menuInferior.setAttribute('id', 'menuInferior');
 
   const btnInicio = document.createElement('button');
-  btnInicio.setAttribute('class', 'iconosFooter');
+  btnInicio.setAttribute('class', 'casa');
   const iconoCasa = document.createElement('IMG');
   iconoCasa.src = '../images/House.png';
   btnInicio.appendChild(iconoCasa);
 
   const btnFiltro = document.createElement('button');
-  btnFiltro.setAttribute('class', 'iconosFooter');
+  btnFiltro.setAttribute('class', 'filtro');
   const iconoFiltro = document.createElement('IMG');
   iconoFiltro.src = '../images/filtro.png';
   btnFiltro.appendChild(iconoFiltro);
 
   const btnGuardar = document.createElement('button');
-  btnGuardar.setAttribute('class', 'iconosFooter');
+  btnGuardar.setAttribute('class', 'guardar');
   const iconoGuardar = document.createElement('IMG');
   iconoGuardar.src = '../images/guardar.png';
   btnGuardar.appendChild(iconoGuardar);
 
   const btnPerfil = document.createElement('button');
-  btnPerfil.setAttribute('class', 'iconosFooter');
+  btnPerfil.setAttribute('class', 'usuario');
   const iconoPerfil = document.createElement('IMG');
   iconoPerfil.src = '../images/monito.png';
   btnPerfil.appendChild(iconoPerfil);
@@ -121,6 +118,8 @@ export const muro = () => {
     e.preventDefault();
     const formPublicacion = document.getElementById('formPublicacion');
     formPublicacion.style.visibility = 'visible';
+    formPublicacion.style.opacity = '1';
+    formPublicacion.reset();
   });
   return seccionMuro;
 };

@@ -7,7 +7,7 @@ myFunction(); */
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 
 // eslint-disable-next-line import/no-cycle
-import { login } from './Component/login.js';
+import { inicio } from './Component/inicio.js';
 // eslint-disable-next-line import/no-cycle
 import { muro } from './Component/muro.js';
 // eslint-disable-next-line import/no-cycle
@@ -16,7 +16,7 @@ import { registro } from './Component/registro.js';
 const rootDiv = document.getElementById('root');
 
 const routes = {
-  '/': login,
+  '/': inicio,
   '/registro': registro,
   '/muro': muro,
 };
