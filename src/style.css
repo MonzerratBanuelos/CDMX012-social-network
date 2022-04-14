@@ -170,15 +170,19 @@
         cursor: pointer;
     }
     .modal1{
-        position:absolute;
-        width: 50%;
-        height: 39%;
-        background-color: white;
-        border-radius: 10px;
-        left: 50%;
-        top:50%;
-        border: 2px solid #EBC920;
-        transform: translate(-50%, -50%);
+    position: absolute;
+    width: 50%;
+    height: 39%;
+    background-color: white;
+    border-radius: 10px;
+    left: 50%;
+    top: 50%;
+    border: 2px solid #EBC920;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     }
     .contmodal{
         width: 100%;
@@ -192,9 +196,7 @@
     }
     #iconomal{
      position: relative;
-     width: 30%;
-     left: 35%;
-     top: 10%;
+     width: 40%;
     }
     .mensajemal{
         text-align: center;
@@ -207,9 +209,10 @@
         width: 45%;
         height: 12%;
         position: relative;
-        left: 27.5%;
-        top: 5%;
+        bottom: 5%;
+        top:2%;
     }
+    
     a{
         text-decoration:none ;
         color: white;
@@ -333,23 +336,24 @@
     #btnCerrarSesion{
         background: none;
         border: none;
+        display: flex;
         position: absolute;
         top: 89%;
         left: 27%;
         color: black;
         font-size: 14px;
         font-weight: bold;
+        justify-content: space-around;
         cursor: pointer;
-        width: 50%;
+        width: fit-content;
         height: 10%;
+        flex-direction: row-reverse;
         box-shadow: none;
     }
     #cerrarSesionImg{
-        width: 10%;
-        margin: 2%;
-        position: absolute;
-        right: 70%;
-        bottom: 31%;
+    width: 10%;
+    margin: 2%;
+    position: relative;
     }
 
     #publicar{

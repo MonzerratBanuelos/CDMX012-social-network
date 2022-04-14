@@ -99,7 +99,8 @@ export function cerrar() {
       () => {
         document.getElementById('contmodal').style.opacity = '1';
         document.getElementById('contmodal').style.visibility = 'visible';
-        document.getElementById('mensajemal').textContent = 'Cerraste sesión';
+        document.getElementById('mensajemal').textContent = 'Vuelve pronto';
+        document.getElementById('iconomal').src = '../images/logo.png';
       },
     )
     // eslint-disable-next-line no-unused-vars
