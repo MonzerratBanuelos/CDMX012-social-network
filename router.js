@@ -35,6 +35,7 @@ export const onNavigate = (pathname) => {
 };
 // eslint-disable-next-line prefer-const
 let component = routes[window.location.pathname];
+console.log(window.location.pathname);
 // window.onNavigate = onNavigate;
 window.onpopstate = () => {
   while (rootDiv.firstChild) {
