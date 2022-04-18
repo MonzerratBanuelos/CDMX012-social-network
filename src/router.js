@@ -33,6 +33,7 @@ export const onNavigate = (pathname) => {
 
   rootDiv.appendChild(routes[pathname]());
 };
+const component = routes[window.location.pathname];
 // window.onNavigate = onNavigate;
 window.onpopstate = () => {
   while (rootDiv.firstChild) {
@@ -40,8 +41,6 @@ window.onpopstate = () => {
   }
   rootDiv.appendChild(routes[window.location.pathname]());
 };
-
-const component = routes[window.location.pathname];
 
 rootDiv.appendChild(component());
 
