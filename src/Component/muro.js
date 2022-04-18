@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../router.js';
 // eslint-disable-next-line import/no-unresolved
-import { datos, cerrar } from '../../lib/index.js';
+import { datos, cerrar } from '../lib/index.js';
 // eslint-disable-next-line import/no-cycle
 import { GetPost } from './post/ImprimirPost.js';
 
