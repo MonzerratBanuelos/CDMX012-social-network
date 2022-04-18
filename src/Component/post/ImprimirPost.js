@@ -138,6 +138,7 @@ export const GetPost = () => {
             const ingredientes = formPublicacion.inputIngredientes;
             const procedimiento = formPublicacion.inputProcedimiento;
             const categoria = formPublicacion.selectCategoria;
+            const btnEditar = document.getElementById('btnActualizar');
             // eslint-disable-next-line max-len
             // guardarReceta(inputReceta.value, inputIngredientes.value, inputProcedimiento.value, selectCategoria.value);
             if (editandoReceta === true) {
@@ -147,6 +148,7 @@ export const GetPost = () => {
                 procedimiento: procedimiento.value,
                 categoria: categoria.value,
               });
+              btnEditar.style.opacity = '1';
             }
             formPublicacion.reset();
             formPublicacion.style.visibility = 'hidden';

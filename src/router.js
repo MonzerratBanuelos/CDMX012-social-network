@@ -34,7 +34,7 @@ export const onNavigate = (pathname) => {
   rootDiv.appendChild(routes[pathname]());
 };
 // eslint-disable-next-line prefer-const
-let component = routes[window.location.pathname];
+let component = routes[window.location.pathname.replace('/CDMX012-social-network/src', '')];
 console.log(window.location.pathname);
 // window.onNavigate = onNavigate;
 window.onpopstate = () => {
