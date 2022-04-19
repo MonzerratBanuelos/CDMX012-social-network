@@ -37,12 +37,19 @@ en la que podamos **leer y escribir datos**.
 
 ## 3. Historias de usuario
 UH 1. El usuario requiere registrarse e iniciar sesión con un correo electrónico que sea válido y contraseña. 
+
 UH 2. El usuario quiere tener la opción de iniciar sesión, registrarse y validar su correo con Google. 
+
 UH 3. El usuario quiere poder visualizar el muro y timeline de recetas al momento de iniciar sesión. 
+
 UH 4. El usuario quiere postear sus recetas. 
+
 UH 5. El usuario requiere borrar los post de sus recetas. 
+
 UH 6. El usuario quiere poder editar sus post realizados anteriormente.
+
 UH 7. El usuario puede visualizar los post que le gustan atravéz de un 'like' que puede dar o quitar y puede visualizarlos en un contador. 
+
 UH 8. El usuario quiere poder mantener su sesión activa y dirigirse al muro directamente y cerrar sesion cuando asi lo requiera.
 
 ## 4. Diseño de la Interfaz de Usuario (prototipo de baja fidelidad)
